@@ -1,0 +1,3116 @@
+openapi: 3.0.3
+info:
+  title: TON
+  version: 1.0.0
+  contact: {}
+servers:
+- url: http://{{url}}
+paths:
+  /transactionDB:
+    get:
+      summary: getTransactionDB
+      description: getTransactionDB
+      operationId: gettransactiondb
+      parameters:
+      - name: account
+        in: query
+        schema:
+          type: string
+          example: EQBQT3yfp5i554TWGszTNEfbsyDca028ETPBFj_iBsx2vDMY
+      - name: lt
+        in: query
+        schema:
+          type: string
+          example: '36834668000003'
+      - name: hash
+        in: query
+        schema:
+          type: string
+          example: 32fab7aa55d6b417962d45b551e95c0f0c96646beca09ec29a5f79f246c9d661
+      - name: count
+        in: query
+        schema:
+          type: string
+          example: '10'
+      responses:
+        '200':
+          description: getTransactionDB
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+            Content-Length:
+              schema:
+                type: string
+                example: '1293'
+            Date:
+              schema:
+                type: string
+                example: Wed, 24 May 2023 21:05:35 GMT
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  answer:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          example: EQBQT3yfp5i554TWGszTNEfbsyDca028ETPBFj_iBsx2vDMY
+                        fee:
+                          type: string
+                          example: '5985684'
+                        hash:
+                          type: string
+                          example: 32FAB7AA55D6B417962D45B551E95C0F0C96646BECA09EC29A5F79F246C9D661
+                        lt:
+                          type: number
+                          example: 36834668000003
+                        messageIn:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              destination:
+                                type: string
+                                example: EQBQT3yfp5i554TWGszTNEfbsyDca028ETPBFj_iBsx2vDMY
+                              lt:
+                                type: number
+                                example: 36834668000002
+                              message_hash:
+                                type: string
+                                example: 77A23B6C190D6E1CBF6F521799D6C0F8DF3FF6040436CDDFD7B34868DD7C970C
+                              source:
+                                type: string
+                                example: EQCDRDBFK0I6qIeXC4ZoLQEP7xdynVGEjG4Lo0vmQuU8_OXC
+                              time:
+                                type: number
+                                example: 1681482103
+                              transfer:
+                                nullable: true
+                                example: null
+                              value:
+                                type: string
+                                example: '50000000'
+                          example:
+                          - destination: EQBQT3yfp5i554TWGszTNEfbsyDca028ETPBFj_iBsx2vDMY
+                            lt: 36834668000002
+                            message_hash: 77A23B6C190D6E1CBF6F521799D6C0F8DF3FF6040436CDDFD7B34868DD7C970C
+                            source: EQCDRDBFK0I6qIeXC4ZoLQEP7xdynVGEjG4Lo0vmQuU8_OXC
+                            time: 1681482103
+                            transfer: null
+                            value: '50000000'
+                        time:
+                          type: number
+                          example: 1681482103
+                        type:
+                          type: string
+                          example: ordinary
+                    example:
+                    - address: EQBQT3yfp5i554TWGszTNEfbsyDca028ETPBFj_iBsx2vDMY
+                      fee: '5985684'
+                      hash: 32FAB7AA55D6B417962D45B551E95C0F0C96646BECA09EC29A5F79F246C9D661
+                      lt: 36834668000003
+                      messageIn:
+                      - destination: EQBQT3yfp5i554TWGszTNEfbsyDca028ETPBFj_iBsx2vDMY
+                        lt: 36834668000002
+                        message_hash: 77A23B6C190D6E1CBF6F521799D6C0F8DF3FF6040436CDDFD7B34868DD7C970C
+                        source: EQCDRDBFK0I6qIeXC4ZoLQEP7xdynVGEjG4Lo0vmQuU8_OXC
+                        time: 1681482103
+                        transfer: null
+                        value: '50000000'
+                      time: 1681482103
+                      type: ordinary
+                    - address: EQBQT3yfp5i554TWGszTNEfbsyDca028ETPBFj_iBsx2vDMY
+                      fee: '6244000'
+                      hash: 9448854B22101CC0290119B3F33C9965C7DDBB7DAB62A6AAD3CEA3911D04C34E
+                      lt: 36834638000005
+                      messageIn:
+                      - destination: EQBQT3yfp5i554TWGszTNEfbsyDca028ETPBFj_iBsx2vDMY
+                        lt: 36834638000004
+                        message_hash: 992A0B24FC5E909AC0C0B64D979D307E821ED7AF5AC87D5D1948F857FCF860CD
+                        source: EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv
+                        time: 1681481998
+                        transfer:
+                          amount: '1022000000'
+                          comment: ''
+                          from: EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv
+                          query_id: '0'
+                          to: EQCDRDBFK0I6qIeXC4ZoLQEP7xdynVGEjG4Lo0vmQuU8_OXC
+                          token: EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv
+                          transfer_type: internal_transfer
+                          type: jetton
+                        value: '8000000'
+                      time: 1681481998
+                      type: ordinary
+              examples:
+                getTransactionDB:
+                  value:
+                    answer:
+                    - address: EQBQT3yfp5i554TWGszTNEfbsyDca028ETPBFj_iBsx2vDMY
+                      fee: '5985684'
+                      hash: 32FAB7AA55D6B417962D45B551E95C0F0C96646BECA09EC29A5F79F246C9D661
+                      lt: 36834668000003
+                      messageIn:
+                      - destination: EQBQT3yfp5i554TWGszTNEfbsyDca028ETPBFj_iBsx2vDMY
+                        lt: 36834668000002
+                        message_hash: 77A23B6C190D6E1CBF6F521799D6C0F8DF3FF6040436CDDFD7B34868DD7C970C
+                        source: EQCDRDBFK0I6qIeXC4ZoLQEP7xdynVGEjG4Lo0vmQuU8_OXC
+                        time: 1681482103
+                        transfer: null
+                        value: '50000000'
+                      time: 1681482103
+                      type: ordinary
+                    - address: EQBQT3yfp5i554TWGszTNEfbsyDca028ETPBFj_iBsx2vDMY
+                      fee: '6244000'
+                      hash: 9448854B22101CC0290119B3F33C9965C7DDBB7DAB62A6AAD3CEA3911D04C34E
+                      lt: 36834638000005
+                      messageIn:
+                      - destination: EQBQT3yfp5i554TWGszTNEfbsyDca028ETPBFj_iBsx2vDMY
+                        lt: 36834638000004
+                        message_hash: 992A0B24FC5E909AC0C0B64D979D307E821ED7AF5AC87D5D1948F857FCF860CD
+                        source: EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv
+                        time: 1681481998
+                        transfer:
+                          amount: '1022000000'
+                          comment: ''
+                          from: EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv
+                          query_id: '0'
+                          to: EQCDRDBFK0I6qIeXC4ZoLQEP7xdynVGEjG4Lo0vmQuU8_OXC
+                          token: EQDQoc5M3Bh8eWFephi9bClhevelbZZvWhkqdo80XuY_0qXv
+                          transfer_type: internal_transfer
+                          type: jetton
+                        value: '8000000'
+                      time: 1681481998
+                      type: ordinary
+  /transaction2DB:
+    get:
+      summary: getTransaction1DB
+      description: getTransaction1DB
+      operationId: gettransaction1db
+      parameters:
+      - name: account
+        in: query
+        schema:
+          type: string
+          example: Ef8voAFh-ByCeKD3SZhjMNzioqCmDOK6S6IaeefTwYmRhgsn
+      - name: lt
+        in: query
+        schema:
+          type: string
+          example: '31880435000001'
+      - name: hash
+        in: query
+        schema:
+          type: string
+          example: FDC208B6A1400E9D1179FDD81B40D478E9B632C8A00E5EBC7AF7C13ADE85DB22
+      responses:
+        '200':
+          description: getTransaction1DB
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+            Content-Length:
+              schema:
+                type: string
+                example: '2057'
+            Date:
+              schema:
+                type: string
+                example: Wed, 24 May 2023 21:05:51 GMT
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: string
+                    example: Ef8voAFh-ByCeKD3SZhjMNzioqCmDOK6S6IaeefTwYmRhgsn
+                  account_hex:
+                    type: string
+                    example: 2FA00161F81C8278A0F749986330DCE2A2A0A60CE2BA4BA21A79E7D3C1899186
+                  block:
+                    type: object
+                    properties:
+                      filehash:
+                        type: string
+                        example: 1875BC00000000001875BC00000000001875BC00000000001875BC0000000000
+                      roothash:
+                        type: string
+                        example: 1875BC00000000001875BC00000000001875BC00000000001875BC0000000000
+                      seqno:
+                        type: number
+                        example: 0
+                      shard:
+                        type: string
+                        example: 0000000000000000
+                      workchain:
+                        type: number
+                        example: -2147483648
+                  description:
+                    type: object
+                    properties:
+                      record:
+                        type: object
+                        properties:
+                          aborted:
+                            type: boolean
+                            example: false
+                          action:
+                            type: object
+                            properties:
+                              action_list_hash:
+                                type: string
+                                example: A28D2A1781417B479ABEBF37F9150445266A44E92247A9C36A6B3427889A26D4
+                              msgs_created:
+                                type: number
+                                example: 1
+                              no_funds:
+                                type: boolean
+                                example: false
+                              result_arg:
+                                nullable: true
+                                example: null
+                              result_code:
+                                type: number
+                                example: 0
+                              skipped_actions:
+                                type: number
+                                example: 0
+                              spec_actions:
+                                type: number
+                                example: 0
+                              status_change:
+                                type: string
+                                example: unchanged
+                              succses:
+                                type: boolean
+                                example: true
+                              tot_actions:
+                                type: number
+                                example: 1
+                              tot_msg_size:
+                                type: object
+                                properties:
+                                  bits:
+                                    type: number
+                                    example: 2402
+                                  cells:
+                                    type: number
+                                    example: 4
+                              total_action_fees:
+                                type: number
+                                example: 9936515
+                              total_fwd_fees:
+                                type: number
+                                example: 29810000
+                              valid:
+                                type: boolean
+                                example: true
+                          compute:
+                            type: object
+                            properties:
+                              account_activated:
+                                type: boolean
+                                example: false
+                              exit_arg:
+                                nullable: true
+                                example: null
+                              exit_code:
+                                type: number
+                                example: 0
+                              gas_credit:
+                                type: number
+                                example: 10000
+                              gas_fees:
+                                nullable: true
+                                example: null
+                              gas_limit:
+                                type: number
+                                example: 0
+                              gas_used:
+                                type: number
+                                example: 2994
+                              mode:
+                                type: number
+                                example: 0
+                              msg_state_used:
+                                type: boolean
+                                example: false
+                              success:
+                                type: boolean
+                                example: true
+                              type:
+                                type: string
+                                example: compute_vm
+                              vm_final_state_hash:
+                                type: string
+                                example: 0000000000000000000000000000000000000000000000000000000000000000
+                              vm_init_state_hash:
+                                type: string
+                                example: 0000000000000000000000000000000000000000000000000000000000000000
+                              vm_steps:
+                                type: number
+                                example: 66
+                          credit:
+                            type: object
+                            properties:
+                              error:
+                                type: string
+                                example: Can't unpack maybe_TrCreditPhase
+                          credit_first:
+                            type: boolean
+                            example: true
+                          destroyed:
+                            type: boolean
+                            example: false
+                          storage:
+                            type: object
+                            properties:
+                              acc_status_change:
+                                type: string
+                                example: unchanged
+                              storage_fees_collected:
+                                type: number
+                                example: 1404953
+                              storage_fees_due:
+                                nullable: true
+                                example: null
+                      type:
+                        type: string
+                        example: ordinary
+                  fees:
+                    type: string
+                    example: '76331468'
+                  hash:
+                    type: string
+                    example: FDC208B6A1400E9D1179FDD81B40D478E9B632C8A00E5EBC7AF7C13ADE85DB22
+                  lt:
+                    type: number
+                    example: 31880435000001
+                  messageIn:
+                    type: object
+                    properties:
+                      destination:
+                        type: string
+                        example: Ef8voAFh-ByCeKD3SZhjMNzioqCmDOK6S6IaeefTwYmRhgsn
+                      import_fee:
+                        type: number
+                        example: 0
+                      message_hash:
+                        type: string
+                        example: FA45F7BB4B3CC0ACAC1DA9053ECB7436CCDD7390D550366BC4B10D8268FEF738
+                  messageOut:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        destination:
+                          type: string
+                          example: Ef8OvX_5ynDgbp4iqJIvWudSEanWo0qAlOjhWHtga9u2YjVp
+                        fwd_fee:
+                          type: number
+                          example: 19873485
+                        ihr_fee:
+                          type: number
+                          example: 0
+                        lt:
+                          type: number
+                          example: 31880435000002
+                        message_hash:
+                          type: string
+                          example: 1285A459B15A2DE7F57F0467CE5D2754655CEF4001BDABAB62D6BC0CEF5591D2
+                        source:
+                          type: string
+                          example: Ef8voAFh-ByCeKD3SZhjMNzioqCmDOK6S6IaeefTwYmRhgsn
+                        time:
+                          type: number
+                          example: 1665336135
+                        transfer:
+                          nullable: true
+                          example: null
+                        value:
+                          type: string
+                          example: '5000000000'
+                    example:
+                    - destination: Ef8OvX_5ynDgbp4iqJIvWudSEanWo0qAlOjhWHtga9u2YjVp
+                      fwd_fee: 19873485
+                      ihr_fee: 0
+                      lt: 31880435000002
+                      message_hash: 1285A459B15A2DE7F57F0467CE5D2754655CEF4001BDABAB62D6BC0CEF5591D2
+                      source: Ef8voAFh-ByCeKD3SZhjMNzioqCmDOK6S6IaeefTwYmRhgsn
+                      time: 1665336135
+                      transfer: null
+                      value: '5000000000'
+                  time:
+                    type: number
+                    example: 1665336135
+                  total_fees:
+                    type: string
+                    example: '96204953'
+                  workchain:
+                    type: number
+                    example: -1
+              examples:
+                getTransaction1DB:
+                  value:
+                    account: Ef8voAFh-ByCeKD3SZhjMNzioqCmDOK6S6IaeefTwYmRhgsn
+                    account_hex: 2FA00161F81C8278A0F749986330DCE2A2A0A60CE2BA4BA21A79E7D3C1899186
+                    block:
+                      filehash: 1875BC00000000001875BC00000000001875BC00000000001875BC0000000000
+                      roothash: 1875BC00000000001875BC00000000001875BC00000000001875BC0000000000
+                      seqno: 0
+                      shard: 0000000000000000
+                      workchain: -2147483648
+                    description:
+                      record:
+                        aborted: false
+                        action:
+                          action_list_hash: A28D2A1781417B479ABEBF37F9150445266A44E92247A9C36A6B3427889A26D4
+                          msgs_created: 1
+                          no_funds: false
+                          result_arg: null
+                          result_code: 0
+                          skipped_actions: 0
+                          spec_actions: 0
+                          status_change: unchanged
+                          succses: true
+                          tot_actions: 1
+                          tot_msg_size:
+                            bits: 2402
+                            cells: 4
+                          total_action_fees: 9936515
+                          total_fwd_fees: 29810000
+                          valid: true
+                        compute:
+                          account_activated: false
+                          exit_arg: null
+                          exit_code: 0
+                          gas_credit: 10000
+                          gas_fees: null
+                          gas_limit: 0
+                          gas_used: 2994
+                          mode: 0
+                          msg_state_used: false
+                          success: true
+                          type: compute_vm
+                          vm_final_state_hash: 0000000000000000000000000000000000000000000000000000000000000000
+                          vm_init_state_hash: 0000000000000000000000000000000000000000000000000000000000000000
+                          vm_steps: 66
+                        credit:
+                          error: Can't unpack maybe_TrCreditPhase
+                        credit_first: true
+                        destroyed: false
+                        storage:
+                          acc_status_change: unchanged
+                          storage_fees_collected: 1404953
+                          storage_fees_due: null
+                      type: ordinary
+                    fees: '76331468'
+                    hash: FDC208B6A1400E9D1179FDD81B40D478E9B632C8A00E5EBC7AF7C13ADE85DB22
+                    lt: 31880435000001
+                    messageIn:
+                      destination: Ef8voAFh-ByCeKD3SZhjMNzioqCmDOK6S6IaeefTwYmRhgsn
+                      import_fee: 0
+                      message_hash: FA45F7BB4B3CC0ACAC1DA9053ECB7436CCDD7390D550366BC4B10D8268FEF738
+                    messageOut:
+                    - destination: Ef8OvX_5ynDgbp4iqJIvWudSEanWo0qAlOjhWHtga9u2YjVp
+                      fwd_fee: 19873485
+                      ihr_fee: 0
+                      lt: 31880435000002
+                      message_hash: 1285A459B15A2DE7F57F0467CE5D2754655CEF4001BDABAB62D6BC0CEF5591D2
+                      source: Ef8voAFh-ByCeKD3SZhjMNzioqCmDOK6S6IaeefTwYmRhgsn
+                      time: 1665336135
+                      transfer: null
+                      value: '5000000000'
+                    time: 1665336135
+                    total_fees: '96204953'
+                    workchain: -1
+  /lastNum:
+    get:
+      summary: lastNum
+      description: lastNum
+      operationId: lastnum
+      responses:
+        '200':
+          description: lastNum
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+            Content-Length:
+              schema:
+                type: string
+                example: '402'
+            Date:
+              schema:
+                type: string
+                example: Wed, 24 May 2023 21:06:33 GMT
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '-1':
+                    type: object
+                    properties:
+                      '8000000000000000':
+                        type: object
+                        properties:
+                          filehash:
+                            type: string
+                            example: B60455CC5ED20A3866DAF1430D90DF6C2EEBBFAEDD31003162BF0F103E960F6D
+                          roothash:
+                            type: string
+                            example: 8D644B4AB7D5BBA49FC2659CF737DBAD635450FF399F4BC4CFB840C39694CB9A
+                          seqno:
+                            type: number
+                            example: 29801410
+                  '0':
+                    type: object
+                    properties:
+                      '8000000000000000':
+                        type: object
+                        properties:
+                          filehash:
+                            type: string
+                            example: B9FA20E270F55B5E0C885A69E4B40FDD0FFAA0BF38FE987D94052B2590402547
+                          roothash:
+                            type: string
+                            example: 418264A61CB1B059AC257E20959AD9084C7311D5E3DE6BDF80A3998D00CECD1E
+                          seqno:
+                            type: number
+                            example: 35473945
+              examples:
+                lastNum:
+                  value:
+                    '-1':
+                      '8000000000000000':
+                        filehash: B60455CC5ED20A3866DAF1430D90DF6C2EEBBFAEDD31003162BF0F103E960F6D
+                        roothash: 8D644B4AB7D5BBA49FC2659CF737DBAD635450FF399F4BC4CFB840C39694CB9A
+                        seqno: 29801410
+                    '0':
+                      '8000000000000000':
+                        filehash: B9FA20E270F55B5E0C885A69E4B40FDD0FFAA0BF38FE987D94052B2590402547
+                        roothash: 418264A61CB1B059AC257E20959AD9084C7311D5E3DE6BDF80A3998D00CECD1E
+                        seqno: 35473945
+  /search:
+    get:
+      summary: searchBlock
+      description: searchBlock
+      operationId: searchblock
+      parameters:
+      - name: workchain
+        in: query
+        schema:
+          type: string
+          example: '-1'
+      - name: shard
+        in: query
+        schema:
+          type: string
+          example: '8000000000000000'
+      - name: seqno
+        in: query
+        schema:
+          type: string
+          example: '2954490'
+      responses:
+        '200':
+          description: searchBlock
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+            Content-Length:
+              schema:
+                type: string
+                example: '3693'
+            Date:
+              schema:
+                type: string
+                example: Wed, 24 May 2023 21:06:02 GMT
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  header:
+                    type: object
+                    properties:
+                      after_merge:
+                        type: boolean
+                        example: false
+                      after_split:
+                        type: boolean
+                        example: false
+                      before_split:
+                        type: boolean
+                        example: false
+                      block:
+                        type: object
+                        properties:
+                          seqno:
+                            type: number
+                            example: 2954490
+                          shard:
+                            type: string
+                            example: '8000000000000000'
+                          workchain:
+                            type: number
+                            example: -1
+                      catchain_seqno:
+                        type: number
+                        example: 45860
+                      filehash:
+                        type: string
+                        example: 4686CABE267452012AE95CAC508011D84B12E344AF65A83FCE5056E8E90545DD
+                      flags:
+                        type: number
+                        example: 0
+                      global_id:
+                        type: number
+                        example: -239
+                      key_block:
+                        type: boolean
+                        example: false
+                      lt_end:
+                        type: number
+                        example: 4561205000004
+                      lt_start:
+                        type: number
+                        example: 4561205000000
+                      masterchain_block:
+                        type: object
+                        properties:
+                          filehash:
+                            type: string
+                            example: 2BA47945F6D51D3B2F300E699E1043874B35CE4BE5E2CC9C2C47BD8ACD377686
+                          roothash:
+                            type: string
+                            example: 48AAE24D7D259727E6837AD48E2BE5CD770C62C86B46FD38EE160F06A927C9D6
+                          seqno:
+                            type: number
+                            example: 2954489
+                          shard:
+                            type: string
+                            example: '8000000000000000'
+                          workchain:
+                            type: number
+                            example: -1
+                      min_ref_mc_seqno:
+                        type: number
+                        example: 2954485
+                      next_block:
+                        type: object
+                        properties:
+                          seqno:
+                            type: number
+                            example: 2954491
+                          shard:
+                            type: string
+                            example: '8000000000000000'
+                          workchain:
+                            type: number
+                            example: -1
+                      not_master:
+                        type: boolean
+                        example: false
+                      prev_key_block_seqno:
+                        type: object
+                        properties:
+                          seqno:
+                            type: number
+                            example: 2945428
+                          shard:
+                            type: string
+                            example: '8000000000000000'
+                          workchain:
+                            type: number
+                            example: -1
+                      previous:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            filehas:
+                              type: string
+                              example: 2BA47945F6D51D3B2F300E699E1043874B35CE4BE5E2CC9C2C47BD8ACD377686
+                            roothash:
+                              type: string
+                              example: 48AAE24D7D259727E6837AD48E2BE5CD770C62C86B46FD38EE160F06A927C9D6
+                            seqno:
+                              type: number
+                              example: 2954489
+                            shard:
+                              type: string
+                              example: '8000000000000000'
+                            workchain:
+                              type: number
+                              example: -1
+                        example:
+                        - filehas: 2BA47945F6D51D3B2F300E699E1043874B35CE4BE5E2CC9C2C47BD8ACD377686
+                          roothash: 48AAE24D7D259727E6837AD48E2BE5CD770C62C86B46FD38EE160F06A927C9D6
+                          seqno: 2954489
+                          shard: '8000000000000000'
+                          workchain: -1
+                      roothash:
+                        type: string
+                        example: 1E43BD87E75B864BD843B22D4C99B4AA4BB39FC7DCEFED04955E1BF366B7479D
+                      time:
+                        type: number
+                        example: 1585275662
+                      validator_list_hash_short:
+                        type: number
+                        example: 1272303594
+                      version:
+                        type: number
+                        example: 0
+                      vert_seqno:
+                        type: number
+                        example: 0
+                      vert_seqno_incr:
+                        type: boolean
+                        example: false
+                      want_merge:
+                        type: boolean
+                        example: true
+                      want_split:
+                        type: boolean
+                        example: false
+                  shards:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        beforemerge:
+                          type: boolean
+                          example: false
+                        beforesplit:
+                          type: boolean
+                          example: false
+                        created:
+                          type: number
+                          example: 1585275659
+                        seqno:
+                          type: string
+                          example: '3983216'
+                        shard:
+                          type: object
+                          properties:
+                            shard:
+                              type: string
+                              example: '1000000000000000'
+                            workchain:
+                              type: number
+                              example: 0
+                        wantmerge:
+                          type: boolean
+                          example: true
+                        wantsplit:
+                          type: boolean
+                          example: false
+                    example:
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275659
+                      seqno: '3983216'
+                      shard:
+                        shard: '1000000000000000'
+                        workchain: 0
+                      wantmerge: true
+                      wantsplit: false
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275658
+                      seqno: '3983182'
+                      shard:
+                        shard: '2800000000000000'
+                        workchain: 0
+                      wantmerge: true
+                      wantsplit: false
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275654
+                      seqno: '3983143'
+                      shard:
+                        shard: '3400000000000000'
+                        workchain: 0
+                      wantmerge: false
+                      wantsplit: false
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275659
+                      seqno: '3983143'
+                      shard:
+                        shard: 3c00000000000000
+                        workchain: 0
+                      wantmerge: true
+                      wantsplit: false
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275658
+                      seqno: '3979945'
+                      shard:
+                        shard: '6000000000000000'
+                        workchain: 0
+                      wantmerge: true
+                      wantsplit: false
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275659
+                      seqno: '3982967'
+                      shard:
+                        shard: a000000000000000
+                        workchain: 0
+                      wantmerge: true
+                      wantsplit: false
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275656
+                      seqno: '3983555'
+                      shard:
+                        shard: e000000000000000
+                        workchain: 0
+                      wantmerge: true
+                      wantsplit: false
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          example: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                        fee:
+                          type: string
+                          example: '0'
+                        hash:
+                          type: string
+                          example: 9AC7490410553ECE735EE7CE869B94EAE08DDDC1EDCBD8A5BE5C8C03CBC634CA
+                        lt:
+                          type: number
+                          example: 4561205000001
+                        messageIn:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              destination:
+                                type: string
+                                example: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                              lt:
+                                type: number
+                                example: 4561205000000
+                              message_hash:
+                                type: string
+                                example: 6C600212C1F245B94C93B048813F29912E478A7FC2F4E0911184EAA6C2DDED44
+                              source:
+                                type: string
+                                example: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                              time:
+                                type: number
+                                example: 1585275662
+                              transfer:
+                                nullable: true
+                                example: null
+                              value:
+                                type: string
+                                example: '4148218741'
+                          example:
+                          - destination: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                            lt: 4561205000000
+                            message_hash: 6C600212C1F245B94C93B048813F29912E478A7FC2F4E0911184EAA6C2DDED44
+                            source: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                            time: 1585275662
+                            transfer: null
+                            value: '4148218741'
+                        time:
+                          type: number
+                          example: 1585275662
+                        type:
+                          type: string
+                          example: tick_tock
+                    example:
+                    - address: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                      hash: 9AC7490410553ECE735EE7CE869B94EAE08DDDC1EDCBD8A5BE5C8C03CBC634CA
+                      lt: 4561205000001
+                      time: 1585275662
+                      type: tick_tock
+                    - address: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                      fee: '0'
+                      hash: CE3BAC295CE2E98AE333BF610A884D67DC3D09C178B7BE37E4FED01B716D64A5
+                      lt: 4561205000002
+                      messageIn:
+                      - destination: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                        lt: 4561205000000
+                        message_hash: 6C600212C1F245B94C93B048813F29912E478A7FC2F4E0911184EAA6C2DDED44
+                        source: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                        time: 1585275662
+                        transfer: null
+                        value: '4148218741'
+                      time: 1585275662
+                      type: ordinary
+                    - address: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                      hash: E397639CEB1F982A6191D48D84B04E3B67000BBC7550E5C89389C5A029F3C428
+                      lt: 4561205000003
+                      time: 1585275662
+                      type: tick_tock
+                    - address: Ef9VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVbxn
+                      hash: BCB7E7D297718582DC9CB3960B0836C71002FB5EF855009989D67668B5931DD1
+                      lt: 4561205000003
+                      time: 1585275662
+                      type: tick_tock
+                    - address: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                      hash: EF021F5FBED24C01630C5B8D4076AD3A965429439BCE98E9D12FC159EE457350
+                      lt: 4561205000001
+                      time: 1585275662
+                      type: tick_tock
+              examples:
+                searchBlock:
+                  value:
+                    header:
+                      after_merge: false
+                      after_split: false
+                      before_split: false
+                      block:
+                        seqno: 2954490
+                        shard: '8000000000000000'
+                        workchain: -1
+                      catchain_seqno: 45860
+                      filehash: 4686CABE267452012AE95CAC508011D84B12E344AF65A83FCE5056E8E90545DD
+                      flags: 0
+                      global_id: -239
+                      key_block: false
+                      lt_end: 4561205000004
+                      lt_start: 4561205000000
+                      masterchain_block:
+                        filehash: 2BA47945F6D51D3B2F300E699E1043874B35CE4BE5E2CC9C2C47BD8ACD377686
+                        roothash: 48AAE24D7D259727E6837AD48E2BE5CD770C62C86B46FD38EE160F06A927C9D6
+                        seqno: 2954489
+                        shard: '8000000000000000'
+                        workchain: -1
+                      min_ref_mc_seqno: 2954485
+                      next_block:
+                        seqno: 2954491
+                        shard: '8000000000000000'
+                        workchain: -1
+                      not_master: false
+                      prev_key_block_seqno:
+                        seqno: 2945428
+                        shard: '8000000000000000'
+                        workchain: -1
+                      previous:
+                      - filehas: 2BA47945F6D51D3B2F300E699E1043874B35CE4BE5E2CC9C2C47BD8ACD377686
+                        roothash: 48AAE24D7D259727E6837AD48E2BE5CD770C62C86B46FD38EE160F06A927C9D6
+                        seqno: 2954489
+                        shard: '8000000000000000'
+                        workchain: -1
+                      roothash: 1E43BD87E75B864BD843B22D4C99B4AA4BB39FC7DCEFED04955E1BF366B7479D
+                      time: 1585275662
+                      validator_list_hash_short: 1272303594
+                      version: 0
+                      vert_seqno: 0
+                      vert_seqno_incr: false
+                      want_merge: true
+                      want_split: false
+                    shards:
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275659
+                      seqno: '3983216'
+                      shard:
+                        shard: '1000000000000000'
+                        workchain: 0
+                      wantmerge: true
+                      wantsplit: false
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275658
+                      seqno: '3983182'
+                      shard:
+                        shard: '2800000000000000'
+                        workchain: 0
+                      wantmerge: true
+                      wantsplit: false
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275654
+                      seqno: '3983143'
+                      shard:
+                        shard: '3400000000000000'
+                        workchain: 0
+                      wantmerge: false
+                      wantsplit: false
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275659
+                      seqno: '3983143'
+                      shard:
+                        shard: 3c00000000000000
+                        workchain: 0
+                      wantmerge: true
+                      wantsplit: false
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275658
+                      seqno: '3979945'
+                      shard:
+                        shard: '6000000000000000'
+                        workchain: 0
+                      wantmerge: true
+                      wantsplit: false
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275659
+                      seqno: '3982967'
+                      shard:
+                        shard: a000000000000000
+                        workchain: 0
+                      wantmerge: true
+                      wantsplit: false
+                    - beforemerge: false
+                      beforesplit: false
+                      created: 1585275656
+                      seqno: '3983555'
+                      shard:
+                        shard: e000000000000000
+                        workchain: 0
+                      wantmerge: true
+                      wantsplit: false
+                    transactions:
+                    - address: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                      hash: 9AC7490410553ECE735EE7CE869B94EAE08DDDC1EDCBD8A5BE5C8C03CBC634CA
+                      lt: 4561205000001
+                      time: 1585275662
+                      type: tick_tock
+                    - address: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                      fee: '0'
+                      hash: CE3BAC295CE2E98AE333BF610A884D67DC3D09C178B7BE37E4FED01B716D64A5
+                      lt: 4561205000002
+                      messageIn:
+                      - destination: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                        lt: 4561205000000
+                        message_hash: 6C600212C1F245B94C93B048813F29912E478A7FC2F4E0911184EAA6C2DDED44
+                        source: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                        time: 1585275662
+                        transfer: null
+                        value: '4148218741'
+                      time: 1585275662
+                      type: ordinary
+                    - address: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                      hash: E397639CEB1F982A6191D48D84B04E3B67000BBC7550E5C89389C5A029F3C428
+                      lt: 4561205000003
+                      time: 1585275662
+                      type: tick_tock
+                    - address: Ef9VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVbxn
+                      hash: BCB7E7D297718582DC9CB3960B0836C71002FB5EF855009989D67668B5931DD1
+                      lt: 4561205000003
+                      time: 1585275662
+                      type: tick_tock
+                    - address: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                      hash: EF021F5FBED24C01630C5B8D4076AD3A965429439BCE98E9D12FC159EE457350
+                      lt: 4561205000001
+                      time: 1585275662
+                      type: tick_tock
+  /transaction:
+    get:
+      summary: getTransaction
+      description: getTransaction
+      operationId: gettransaction
+      parameters:
+      - name: account
+        in: query
+        schema:
+          type: string
+          example: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+      - name: lt
+        in: query
+        schema:
+          type: string
+          example: '31899613000001'
+      - name: hash
+        in: query
+        schema:
+          type: string
+          example: B1DBFBF44860E34EF29EF279CE65DE0440ACE8EB7B04768A89860D9FCF067021
+      - name: count
+        in: query
+        schema:
+          type: string
+          example: '10'
+      responses:
+        '200':
+          description: getTransaction
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+            Content-Length:
+              schema:
+                type: string
+                example: '5775'
+            Date:
+              schema:
+                type: string
+                example: Wed, 24 May 2023 21:06:40 GMT
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  answer:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          example: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        fee:
+                          type: string
+                          example: '4782358'
+                        hash:
+                          type: string
+                          example: B1DBFBF44860E34EF29EF279CE65DE0440ACE8EB7B04768A89860D9FCF067021
+                        lt:
+                          type: number
+                          example: 31899613000001
+                        messageIn:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              message_hash:
+                                type: string
+                                example: B74C332053E46DD8357A5A19EF4C5AE901E6DA9BD1BF3C118CF3DF9332A117B3
+                          example:
+                          - message_hash: B74C332053E46DD8357A5A19EF4C5AE901E6DA9BD1BF3C118CF3DF9332A117B3
+                        time:
+                          type: number
+                          example: 1665397299
+                        type:
+                          type: string
+                          example: ordinary
+                    example:
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '4782358'
+                      hash: B1DBFBF44860E34EF29EF279CE65DE0440ACE8EB7B04768A89860D9FCF067021
+                      lt: 31899613000001
+                      messageIn:
+                      - message_hash: B74C332053E46DD8357A5A19EF4C5AE901E6DA9BD1BF3C118CF3DF9332A117B3
+                      time: 1665397299
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100048'
+                      hash: 3A01AAE79E2A1B98F905AE653B78F0C447BF7C64A08FF55F1EA8251C3AB23025
+                      lt: 31899397000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31899397000002
+                        message_hash: 8DAA633DBC4FC7353DC77BB9C05E3BF026275B9C37EC71F4EEBB5729304A28A7
+                        source: EQAAFugxABFzLPhkzTekxd_7l1gP4uwhBQCfnNpO8AdBpOF5
+                        time: 1665396575
+                        transfer:
+                          amount: null
+                          comment: '148957'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '2000000000000'
+                      time: 1665396575
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100121'
+                      hash: 1CBEE2CFDC829C1001B38CA2C243448E8C3436888462340C586EAAE0005625A2
+                      lt: 31899054000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31899054000002
+                        message_hash: 966362B8226EAB1EB41B144694749223B8FF34CBF1E4A04339E023D6D7E2EFEC
+                        source: EQDQjrjpIZ_mqnBKA8TyiWXy2rK_xWhdzMJeXDUOvMUVS-uf
+                        time: 1665395432
+                        transfer:
+                          amount: null
+                          comment: '158089'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '1000000000'
+                      time: 1665395432
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100057'
+                      hash: FDD31686F45EC3B0027F8F978957CA73B4ABB9110080ED9B70AC136FA577147F
+                      lt: 31898125000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31898125000002
+                        message_hash: C7D6AA531BE4B5A959870F85460950D508DBDD4FE10BC435195B23587A2B28FA
+                        source: EQBfAN7LfaUYgXZNw5Wc7GBgkEX2yhuJ5ka95J1JJwXXf4a8
+                        time: 1665392511
+                        transfer:
+                          amount: null
+                          comment: '158063'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '127953600000'
+                      time: 1665392511
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100002'
+                      hash: 520687CDB67643E88E6EAD16445241F810ED2569B7E346CC021928B882B93655
+                      lt: 31897699000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31897699000002
+                        message_hash: 010B2586CA260E8CDC32136F659359B0276656BF06D0D2D3CF213781CA4F44C7
+                        source: EQBfAN7LfaUYgXZNw5Wc7GBgkEX2yhuJ5ka95J1JJwXXf4a8
+                        time: 1665391134
+                        transfer:
+                          amount: null
+                          comment: '120659'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '2825670000000'
+                      time: 1665391134
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100015'
+                      hash: B14336920496F610964140545AEC124307D54C644F79CD4BD08219425AAB2AAA
+                      lt: 31897686000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31897686000002
+                        message_hash: 8150CD1DFA3F1FCC09BC3BBF3E167BF69BF07A8A7C9F0EF186C7A15FA9A439D5
+                        source: EQBfAN7LfaUYgXZNw5Wc7GBgkEX2yhuJ5ka95J1JJwXXf4a8
+                        time: 1665391087
+                        transfer:
+                          amount: null
+                          comment: '119362'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '928160000000'
+                      time: 1665391087
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100003'
+                      hash: 810C72B1CD1FE86775A1E1033C5543244BEECCD42C99530F402445C26545996F
+                      lt: 31897573000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31897573000002
+                        message_hash: 0D1F086B067D7F1055A1583CA54B216FFE34986594C368B0DF5E87D5C44301CC
+                        source: EQBfAN7LfaUYgXZNw5Wc7GBgkEX2yhuJ5ka95J1JJwXXf4a8
+                        time: 1665390736
+                        transfer:
+                          amount: null
+                          comment: '157941'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '9454748000000'
+                      time: 1665390736
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100014'
+                      hash: 7001055CAAA6E739E02A3EC4D4D6797525CC23093317A3CAAA2956A40B5769D4
+                      lt: 31897554000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31897554000002
+                        message_hash: 736426A35D7C21E369BB9679B352BF2DD1F1A9C714D353F8F51535D7F22037C5
+                        source: EQBfAN7LfaUYgXZNw5Wc7GBgkEX2yhuJ5ka95J1JJwXXf4a8
+                        time: 1665390675
+                        transfer:
+                          amount: null
+                          comment: '158063'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '3000000000'
+                      time: 1665390675
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100001'
+                      hash: 8C462C99DCF708C3AFBA132D0510DB5F67BACABD454D1A2A32FD78F51213EAB6
+                      lt: 31897458000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31897458000002
+                        message_hash: 0009ECACA7E917024961771FCF38552A7254353073D8B0B824167F5A22E7BFB8
+                        source: EQC2sBSwgQ-1W0VUJk7k05ULZAlzPmFVAVojaJRCxfmUarIx
+                        time: 1665390357
+                        transfer: null
+                        value: '47300000000'
+                      time: 1665390357
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100021'
+                      hash: 3D9BC2AFA8836D41FF3E99B3955A884BCE76324EA64D955CACFF55D165B4C0E3
+                      lt: 31897454000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31897454000002
+                        message_hash: 5112CEC28E9A2E50361EB939BD3624C2C25E153FDDFCA1AF03514BE41B80A7C0
+                        source: EQBfAN7LfaUYgXZNw5Wc7GBgkEX2yhuJ5ka95J1JJwXXf4a8
+                        time: 1665390345
+                        transfer:
+                          amount: null
+                          comment: '157941'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '2000000000'
+                      time: 1665390345
+                      type: ordinary
+              examples:
+                getTransaction:
+                  value:
+                    answer:
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '4782358'
+                      hash: B1DBFBF44860E34EF29EF279CE65DE0440ACE8EB7B04768A89860D9FCF067021
+                      lt: 31899613000001
+                      messageIn:
+                      - message_hash: B74C332053E46DD8357A5A19EF4C5AE901E6DA9BD1BF3C118CF3DF9332A117B3
+                      time: 1665397299
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100048'
+                      hash: 3A01AAE79E2A1B98F905AE653B78F0C447BF7C64A08FF55F1EA8251C3AB23025
+                      lt: 31899397000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31899397000002
+                        message_hash: 8DAA633DBC4FC7353DC77BB9C05E3BF026275B9C37EC71F4EEBB5729304A28A7
+                        source: EQAAFugxABFzLPhkzTekxd_7l1gP4uwhBQCfnNpO8AdBpOF5
+                        time: 1665396575
+                        transfer:
+                          amount: null
+                          comment: '148957'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '2000000000000'
+                      time: 1665396575
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100121'
+                      hash: 1CBEE2CFDC829C1001B38CA2C243448E8C3436888462340C586EAAE0005625A2
+                      lt: 31899054000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31899054000002
+                        message_hash: 966362B8226EAB1EB41B144694749223B8FF34CBF1E4A04339E023D6D7E2EFEC
+                        source: EQDQjrjpIZ_mqnBKA8TyiWXy2rK_xWhdzMJeXDUOvMUVS-uf
+                        time: 1665395432
+                        transfer:
+                          amount: null
+                          comment: '158089'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '1000000000'
+                      time: 1665395432
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100057'
+                      hash: FDD31686F45EC3B0027F8F978957CA73B4ABB9110080ED9B70AC136FA577147F
+                      lt: 31898125000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31898125000002
+                        message_hash: C7D6AA531BE4B5A959870F85460950D508DBDD4FE10BC435195B23587A2B28FA
+                        source: EQBfAN7LfaUYgXZNw5Wc7GBgkEX2yhuJ5ka95J1JJwXXf4a8
+                        time: 1665392511
+                        transfer:
+                          amount: null
+                          comment: '158063'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '127953600000'
+                      time: 1665392511
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100002'
+                      hash: 520687CDB67643E88E6EAD16445241F810ED2569B7E346CC021928B882B93655
+                      lt: 31897699000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31897699000002
+                        message_hash: 010B2586CA260E8CDC32136F659359B0276656BF06D0D2D3CF213781CA4F44C7
+                        source: EQBfAN7LfaUYgXZNw5Wc7GBgkEX2yhuJ5ka95J1JJwXXf4a8
+                        time: 1665391134
+                        transfer:
+                          amount: null
+                          comment: '120659'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '2825670000000'
+                      time: 1665391134
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100015'
+                      hash: B14336920496F610964140545AEC124307D54C644F79CD4BD08219425AAB2AAA
+                      lt: 31897686000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31897686000002
+                        message_hash: 8150CD1DFA3F1FCC09BC3BBF3E167BF69BF07A8A7C9F0EF186C7A15FA9A439D5
+                        source: EQBfAN7LfaUYgXZNw5Wc7GBgkEX2yhuJ5ka95J1JJwXXf4a8
+                        time: 1665391087
+                        transfer:
+                          amount: null
+                          comment: '119362'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '928160000000'
+                      time: 1665391087
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100003'
+                      hash: 810C72B1CD1FE86775A1E1033C5543244BEECCD42C99530F402445C26545996F
+                      lt: 31897573000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31897573000002
+                        message_hash: 0D1F086B067D7F1055A1583CA54B216FFE34986594C368B0DF5E87D5C44301CC
+                        source: EQBfAN7LfaUYgXZNw5Wc7GBgkEX2yhuJ5ka95J1JJwXXf4a8
+                        time: 1665390736
+                        transfer:
+                          amount: null
+                          comment: '157941'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '9454748000000'
+                      time: 1665390736
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100014'
+                      hash: 7001055CAAA6E739E02A3EC4D4D6797525CC23093317A3CAAA2956A40B5769D4
+                      lt: 31897554000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31897554000002
+                        message_hash: 736426A35D7C21E369BB9679B352BF2DD1F1A9C714D353F8F51535D7F22037C5
+                        source: EQBfAN7LfaUYgXZNw5Wc7GBgkEX2yhuJ5ka95J1JJwXXf4a8
+                        time: 1665390675
+                        transfer:
+                          amount: null
+                          comment: '158063'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '3000000000'
+                      time: 1665390675
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100001'
+                      hash: 8C462C99DCF708C3AFBA132D0510DB5F67BACABD454D1A2A32FD78F51213EAB6
+                      lt: 31897458000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31897458000002
+                        message_hash: 0009ECACA7E917024961771FCF38552A7254353073D8B0B824167F5A22E7BFB8
+                        source: EQC2sBSwgQ-1W0VUJk7k05ULZAlzPmFVAVojaJRCxfmUarIx
+                        time: 1665390357
+                        transfer: null
+                        value: '47300000000'
+                      time: 1665390357
+                      type: ordinary
+                    - address: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                      fee: '100021'
+                      hash: 3D9BC2AFA8836D41FF3E99B3955A884BCE76324EA64D955CACFF55D165B4C0E3
+                      lt: 31897454000003
+                      messageIn:
+                      - destination: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+                        lt: 31897454000002
+                        message_hash: 5112CEC28E9A2E50361EB939BD3624C2C25E153FDDFCA1AF03514BE41B80A7C0
+                        source: EQBfAN7LfaUYgXZNw5Wc7GBgkEX2yhuJ5ka95J1JJwXXf4a8
+                        time: 1665390345
+                        transfer:
+                          amount: null
+                          comment: '157941'
+                          from: ''
+                          query_id: null
+                          to: ''
+                          token: ''
+                          transfer_type: ''
+                          type: comment
+                        value: '2000000000'
+                      time: 1665390345
+                      type: ordinary
+  /transaction2:
+    get:
+      summary: getTransaction1
+      description: getTransaction1
+      operationId: gettransaction1
+      parameters:
+      - name: account
+        in: query
+        schema:
+          type: string
+          example: EQBVXzBT4lcTA3S7gxrg4hnl5fnsDKj4oNEzNp09aQxkwj1f
+      - name: lt
+        in: query
+        schema:
+          type: string
+          example: '31899613000001'
+      - name: hash
+        in: query
+        schema:
+          type: string
+          example: B1DBFBF44860E34EF29EF279CE65DE0440ACE8EB7B04768A89860D9FCF067021
+      responses:
+        '200':
+          description: getTransaction1
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+            Content-Length:
+              schema:
+                type: string
+                example: '3003'
+            Date:
+              schema:
+                type: string
+                example: Wed, 24 May 2023 21:07:48 GMT
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: string
+                    example: EQAu1mvUwsgT9zhq3bv7p6LZBQVWbKweeBB0fYUYCRkw5pmJ
+                  account_hex:
+                    type: string
+                    example: 2ED66BD4C2C813F7386ADDBBFBA7A2D90505566CAC1E7810747D8518091930E6
+                  block:
+                    type: object
+                    properties:
+                      filehash:
+                        type: string
+                        example: 0B489EBECCF33D86F58E1F12E48E4F323386B4E1D008BE6AB78167A7BB0FE3B9
+                      roothash:
+                        type: string
+                        example: 41FD6586E354072FEC2DFDBEFE6866BBDA6104CD6753E224C44E8B03BE978727
+                      seqno:
+                        type: number
+                        example: 35473956
+                      shard:
+                        type: string
+                        example: '8000000000000000'
+                      workchain:
+                        type: number
+                        example: 0
+                  description:
+                    type: object
+                    properties:
+                      record:
+                        type: object
+                        properties:
+                          aborted:
+                            type: boolean
+                            example: false
+                          action:
+                            type: object
+                            properties:
+                              action_list_hash:
+                                type: string
+                                example: 6BE41BED38132634D4DA4E7E02A5A3B85122E376E64A486866CAF52027AEF3A8
+                              msgs_created:
+                                type: number
+                                example: 2
+                              no_funds:
+                                type: boolean
+                                example: false
+                              result_arg:
+                                nullable: true
+                                example: null
+                              result_code:
+                                type: number
+                                example: 0
+                              skipped_actions:
+                                type: number
+                                example: 0
+                              spec_actions:
+                                type: number
+                                example: 0
+                              status_change:
+                                type: string
+                                example: unchanged
+                              succses:
+                                type: boolean
+                                example: true
+                              tot_actions:
+                                type: number
+                                example: 2
+                              tot_msg_size:
+                                type: object
+                                properties:
+                                  bits:
+                                    type: number
+                                    example: 1906
+                                  cells:
+                                    type: number
+                                    example: 3
+                              total_action_fees:
+                                type: number
+                                example: 835986
+                              total_fwd_fees:
+                                type: number
+                                example: 2508000
+                              valid:
+                                type: boolean
+                                example: true
+                          compute:
+                            type: object
+                            properties:
+                              account_activated:
+                                type: boolean
+                                example: false
+                              exit_arg:
+                                nullable: true
+                                example: null
+                              exit_code:
+                                type: number
+                                example: 0
+                              gas_credit:
+                                nullable: true
+                                example: null
+                              gas_fees:
+                                nullable: true
+                                example: null
+                              gas_limit:
+                                type: number
+                                example: 137420
+                              gas_used:
+                                type: number
+                                example: 9877
+                              mode:
+                                type: number
+                                example: 0
+                              msg_state_used:
+                                type: boolean
+                                example: false
+                              success:
+                                type: boolean
+                                example: true
+                              type:
+                                type: string
+                                example: compute_vm
+                              vm_final_state_hash:
+                                type: string
+                                example: 0000000000000000000000000000000000000000000000000000000000000000
+                              vm_init_state_hash:
+                                type: string
+                                example: 0000000000000000000000000000000000000000000000000000000000000000
+                              vm_steps:
+                                type: number
+                                example: 188
+                          credit:
+                            type: object
+                            properties:
+                              credit:
+                                type: string
+                                example: '137420500'
+                              due_fees_collected:
+                                nullable: true
+                                example: null
+                          credit_first:
+                            type: boolean
+                            example: false
+                          destroyed:
+                            type: boolean
+                            example: false
+                          storage:
+                            type: object
+                            properties:
+                              acc_status_change:
+                                type: string
+                                example: unchanged
+                              storage_fees_collected:
+                                type: number
+                                example: 6
+                              storage_fees_due:
+                                nullable: true
+                                example: null
+                      type:
+                        type: string
+                        example: ordinary
+                  fees:
+                    type: string
+                    example: '10712992'
+                  hash:
+                    type: string
+                    example: 097FBA9686C73E20F83898E2A5783F1A8FF76D92488D2CEBBF511DCF536E2787
+                  lt:
+                    type: number
+                    example: 37915087000012
+                  messageIn:
+                    type: object
+                    properties:
+                      destination:
+                        type: string
+                        example: EQAu1mvUwsgT9zhq3bv7p6LZBQVWbKweeBB0fYUYCRkw5pmJ
+                      fwd_fee:
+                        type: number
+                        example: 6890720
+                      ihr_fee:
+                        type: number
+                        example: 0
+                      lt:
+                        type: number
+                        example: 37915087000011
+                      message_hash:
+                        type: string
+                        example: 417F9AC2FA9A0528E7E5908DF4A01A11FAF6384616CEB0A7448BC1C729C88059
+                      source:
+                        type: string
+                        example: EQC1K9u8EafeJCmMBk2WF-_NoYFTuVUi411XzrebbOLqk88q
+                      time:
+                        type: number
+                        example: 1684962418
+                      transfer:
+                        type: object
+                        properties:
+                          amount:
+                            type: string
+                            example: '7867231209'
+                          comment:
+                            type: string
+                            example: ''
+                          from:
+                            type: string
+                            example: EQAf4BMoiqPf0U2ADoNiEatTemiw3UXkt5H90aQpeSKC2l7f
+                          query_id:
+                            type: string
+                            example: '10982097680357498021'
+                          to:
+                            type: string
+                            example: EQDR1_2oSTeKGHneiRr8pFWtMysfVbg51ZrvweEfN5KFuz2S
+                          token:
+                            type: string
+                            example: EQBlqsm144Dq6SjbPI4jjZvA1hqTIP3CvHovbIfW_t-SCALE
+                          transfer_type:
+                            type: string
+                            example: internal_transfer
+                          type:
+                            type: string
+                            example: jetton
+                      value:
+                        type: string
+                        example: '137420500'
+                  messageOut:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        destination:
+                          type: string
+                          example: EQDR1_2oSTeKGHneiRr8pFWtMysfVbg51ZrvweEfN5KFuz2S
+                        fwd_fee:
+                          type: number
+                          example: 1005342
+                        ihr_fee:
+                          type: number
+                          example: 0
+                        lt:
+                          type: number
+                          example: 37915087000013
+                        message_hash:
+                          type: string
+                          example: 92216622B273599A014C5A02AC2FD912DF7E3951B18A67729643EC10B58F7925
+                        source:
+                          type: string
+                          example: EQAu1mvUwsgT9zhq3bv7p6LZBQVWbKweeBB0fYUYCRkw5pmJ
+                        time:
+                          type: number
+                          example: 1684962418
+                        transfer:
+                          type: object
+                          properties:
+                            amount:
+                              type: string
+                              example: '7867231209'
+                            comment:
+                              type: string
+                              example: ''
+                            from:
+                              type: string
+                              example: EQAf4BMoiqPf0U2ADoNiEatTemiw3UXkt5H90aQpeSKC2l7f
+                            query_id:
+                              type: string
+                              example: '10982097680357498021'
+                            to:
+                              type: string
+                              example: ''
+                            token:
+                              type: string
+                              example: ''
+                            transfer_type:
+                              type: string
+                              example: transfer_notification
+                            type:
+                              type: string
+                              example: jetton
+                          nullable: true
+                        value:
+                          type: string
+                          example: '102781500'
+                    example:
+                    - destination: EQDR1_2oSTeKGHneiRr8pFWtMysfVbg51ZrvweEfN5KFuz2S
+                      fwd_fee: 1005342
+                      ihr_fee: 0
+                      lt: 37915087000013
+                      message_hash: 92216622B273599A014C5A02AC2FD912DF7E3951B18A67729643EC10B58F7925
+                      source: EQAu1mvUwsgT9zhq3bv7p6LZBQVWbKweeBB0fYUYCRkw5pmJ
+                      time: 1684962418
+                      transfer:
+                        amount: '7867231209'
+                        comment: ''
+                        from: EQAf4BMoiqPf0U2ADoNiEatTemiw3UXkt5H90aQpeSKC2l7f
+                        query_id: '10982097680357498021'
+                        to: ''
+                        token: ''
+                        transfer_type: transfer_notification
+                        type: jetton
+                      value: '102781500'
+                    - destination: EQDR1_2oSTeKGHneiRr8pFWtMysfVbg51ZrvweEfN5KFuz2S
+                      fwd_fee: 666672
+                      ihr_fee: 0
+                      lt: 37915087000014
+                      message_hash: D615BA636AA1B1C717DFF84476293FDF5980A154C2210B0695E55801E82562B7
+                      source: EQAu1mvUwsgT9zhq3bv7p6LZBQVWbKweeBB0fYUYCRkw5pmJ
+                      time: 1684962418
+                      transfer: null
+                      value: '16748280'
+                  time:
+                    type: number
+                    example: 1684962418
+                  total_fees:
+                    type: string
+                    example: '12385006'
+                  workchain:
+                    type: number
+                    example: 0
+              examples:
+                getTransaction1:
+                  value:
+                    account: EQAu1mvUwsgT9zhq3bv7p6LZBQVWbKweeBB0fYUYCRkw5pmJ
+                    account_hex: 2ED66BD4C2C813F7386ADDBBFBA7A2D90505566CAC1E7810747D8518091930E6
+                    block:
+                      filehash: 0B489EBECCF33D86F58E1F12E48E4F323386B4E1D008BE6AB78167A7BB0FE3B9
+                      roothash: 41FD6586E354072FEC2DFDBEFE6866BBDA6104CD6753E224C44E8B03BE978727
+                      seqno: 35473956
+                      shard: '8000000000000000'
+                      workchain: 0
+                    description:
+                      record:
+                        aborted: false
+                        action:
+                          action_list_hash: 6BE41BED38132634D4DA4E7E02A5A3B85122E376E64A486866CAF52027AEF3A8
+                          msgs_created: 2
+                          no_funds: false
+                          result_arg: null
+                          result_code: 0
+                          skipped_actions: 0
+                          spec_actions: 0
+                          status_change: unchanged
+                          succses: true
+                          tot_actions: 2
+                          tot_msg_size:
+                            bits: 1906
+                            cells: 3
+                          total_action_fees: 835986
+                          total_fwd_fees: 2508000
+                          valid: true
+                        compute:
+                          account_activated: false
+                          exit_arg: null
+                          exit_code: 0
+                          gas_credit: null
+                          gas_fees: null
+                          gas_limit: 137420
+                          gas_used: 9877
+                          mode: 0
+                          msg_state_used: false
+                          success: true
+                          type: compute_vm
+                          vm_final_state_hash: 0000000000000000000000000000000000000000000000000000000000000000
+                          vm_init_state_hash: 0000000000000000000000000000000000000000000000000000000000000000
+                          vm_steps: 188
+                        credit:
+                          credit: '137420500'
+                          due_fees_collected: null
+                        credit_first: false
+                        destroyed: false
+                        storage:
+                          acc_status_change: unchanged
+                          storage_fees_collected: 6
+                          storage_fees_due: null
+                      type: ordinary
+                    fees: '10712992'
+                    hash: 097FBA9686C73E20F83898E2A5783F1A8FF76D92488D2CEBBF511DCF536E2787
+                    lt: 37915087000012
+                    messageIn:
+                      destination: EQAu1mvUwsgT9zhq3bv7p6LZBQVWbKweeBB0fYUYCRkw5pmJ
+                      fwd_fee: 6890720
+                      ihr_fee: 0
+                      lt: 37915087000011
+                      message_hash: 417F9AC2FA9A0528E7E5908DF4A01A11FAF6384616CEB0A7448BC1C729C88059
+                      source: EQC1K9u8EafeJCmMBk2WF-_NoYFTuVUi411XzrebbOLqk88q
+                      time: 1684962418
+                      transfer:
+                        amount: '7867231209'
+                        comment: ''
+                        from: EQAf4BMoiqPf0U2ADoNiEatTemiw3UXkt5H90aQpeSKC2l7f
+                        query_id: '10982097680357498021'
+                        to: EQDR1_2oSTeKGHneiRr8pFWtMysfVbg51ZrvweEfN5KFuz2S
+                        token: EQBlqsm144Dq6SjbPI4jjZvA1hqTIP3CvHovbIfW_t-SCALE
+                        transfer_type: internal_transfer
+                        type: jetton
+                      value: '137420500'
+                    messageOut:
+                    - destination: EQDR1_2oSTeKGHneiRr8pFWtMysfVbg51ZrvweEfN5KFuz2S
+                      fwd_fee: 1005342
+                      ihr_fee: 0
+                      lt: 37915087000013
+                      message_hash: 92216622B273599A014C5A02AC2FD912DF7E3951B18A67729643EC10B58F7925
+                      source: EQAu1mvUwsgT9zhq3bv7p6LZBQVWbKweeBB0fYUYCRkw5pmJ
+                      time: 1684962418
+                      transfer:
+                        amount: '7867231209'
+                        comment: ''
+                        from: EQAf4BMoiqPf0U2ADoNiEatTemiw3UXkt5H90aQpeSKC2l7f
+                        query_id: '10982097680357498021'
+                        to: ''
+                        token: ''
+                        transfer_type: transfer_notification
+                        type: jetton
+                      value: '102781500'
+                    - destination: EQDR1_2oSTeKGHneiRr8pFWtMysfVbg51ZrvweEfN5KFuz2S
+                      fwd_fee: 666672
+                      ihr_fee: 0
+                      lt: 37915087000014
+                      message_hash: D615BA636AA1B1C717DFF84476293FDF5980A154C2210B0695E55801E82562B7
+                      source: EQAu1mvUwsgT9zhq3bv7p6LZBQVWbKweeBB0fYUYCRkw5pmJ
+                      time: 1684962418
+                      transfer: null
+                      value: '16748280'
+                    time: 1684962418
+                    total_fees: '12385006'
+                    workchain: 0
+  /runmethod:
+    get:
+      summary: runMethod
+      description: runMethod
+      operationId: runmethod
+      parameters:
+      - name: workchain
+        in: query
+        schema:
+          type: string
+          example: '-1'
+      - name: shard
+        in: query
+        schema:
+          type: string
+          example: '8000000000000000'
+      - name: seqno
+        in: query
+        schema:
+          type: string
+          example: '3168386'
+      - name: roothash
+        in: query
+        schema:
+          type: string
+          example: D91B82C733EE13B8DAE8A1F772306F873F6AB14D1B1DADF95E317C8D86C30241
+      - name: filehash
+        in: query
+        schema:
+          type: string
+          example: 6EE3E005ECA745542F31F76D7ADDDD67A954CE91F098A6C9FC1769DDBD891637
+      - name: account
+        in: query
+        schema:
+          type: string
+          example: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+      - name: method
+        in: query
+        schema:
+          type: string
+          example: participant_list_extended
+      - name: params
+        in: query
+        schema:
+          type: string
+          example: ''
+      responses:
+        '200':
+          description: runMethod
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+            Content-Length:
+              schema:
+                type: string
+                example: '40'
+            Date:
+              schema:
+                type: string
+                example: Wed, 24 May 2023 21:08:06 GMT
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  answer:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        data:
+                          nullable: true
+                          example: null
+                        type:
+                          type: string
+                          example: 'null'
+                    example:
+                    - data: null
+                      type: 'null'
+              examples:
+                runMethod:
+                  value:
+                    answer:
+                    - data: null
+                      type: 'null'
+  /blockLite:
+    get:
+      summary: getBlock
+      description: getBlock
+      operationId: getblock
+      parameters:
+      - name: workchain
+        in: query
+        schema:
+          type: string
+          example: '-1'
+      - name: shard
+        in: query
+        schema:
+          type: string
+          example: '8000000000000000'
+      - name: seqno
+        in: query
+        schema:
+          type: string
+          example: '19'
+      - name: roothash
+        in: query
+        schema:
+          type: string
+          example: 2884922A6C3E639AC1CC476AC0E40DF5B0FF2DB7A07828C29F4E29D1F39256E7
+      - name: filehash
+        in: query
+        schema:
+          type: string
+          example: A3988131BB3418D2E0CC2794709E392810DA675D10D7A01A6B0E6D351CE852E4
+      responses:
+        '200':
+          description: getBlock
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+            Content-Length:
+              schema:
+                type: string
+                example: '5698'
+            Date:
+              schema:
+                type: string
+                example: Wed, 24 May 2023 21:08:41 GMT
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  header:
+                    type: object
+                    properties:
+                      after_merge:
+                        type: boolean
+                        example: false
+                      after_split:
+                        type: boolean
+                        example: false
+                      before_split:
+                        type: boolean
+                        example: false
+                      block:
+                        type: object
+                        properties:
+                          seqno:
+                            type: number
+                            example: 19
+                          shard:
+                            type: string
+                            example: '8000000000000000'
+                          workchain:
+                            type: number
+                            example: -1
+                      catchain_seqno:
+                        type: number
+                        example: 1
+                      filehash:
+                        type: string
+                        example: A3988131BB3418D2E0CC2794709E392810DA675D10D7A01A6B0E6D351CE852E4
+                      flags:
+                        type: number
+                        example: 0
+                      global_id:
+                        type: number
+                        example: -239
+                      key_block:
+                        type: boolean
+                        example: false
+                      lt_end:
+                        type: number
+                        example: 23000012
+                      lt_start:
+                        type: number
+                        example: 23000000
+                      masterchain_block:
+                        type: object
+                        properties:
+                          filehash:
+                            type: string
+                            example: EC23AEE3CC54868D2D1D9336091105E342E618AED681C0AA792466603290DD94
+                          roothash:
+                            type: string
+                            example: 408C1E5D718AB95CEC00B96A8A04D3B16909EBFC11F8DE0DCF7193F9C1638616
+                          seqno:
+                            type: number
+                            example: 18
+                          shard:
+                            type: string
+                            example: '8000000000000000'
+                          workchain:
+                            type: number
+                            example: -1
+                      min_ref_mc_seqno:
+                        type: number
+                        example: 17
+                      next_block:
+                        type: object
+                        properties:
+                          seqno:
+                            type: number
+                            example: 20
+                          shard:
+                            type: string
+                            example: '8000000000000000'
+                          workchain:
+                            type: number
+                            example: -1
+                      not_master:
+                        type: boolean
+                        example: false
+                      prev_key_block_seqno:
+                        type: object
+                        properties:
+                          seqno:
+                            type: number
+                            example: 0
+                          shard:
+                            type: string
+                            example: '8000000000000000'
+                          workchain:
+                            type: number
+                            example: -1
+                      previous:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            filehas:
+                              type: string
+                              example: EC23AEE3CC54868D2D1D9336091105E342E618AED681C0AA792466603290DD94
+                            roothash:
+                              type: string
+                              example: 408C1E5D718AB95CEC00B96A8A04D3B16909EBFC11F8DE0DCF7193F9C1638616
+                            seqno:
+                              type: number
+                              example: 18
+                            shard:
+                              type: string
+                              example: '8000000000000000'
+                            workchain:
+                              type: number
+                              example: -1
+                        example:
+                        - filehas: EC23AEE3CC54868D2D1D9336091105E342E618AED681C0AA792466603290DD94
+                          roothash: 408C1E5D718AB95CEC00B96A8A04D3B16909EBFC11F8DE0DCF7193F9C1638616
+                          seqno: 18
+                          shard: '8000000000000000'
+                          workchain: -1
+                      roothash:
+                        type: string
+                        example: 2884922A6C3E639AC1CC476AC0E40DF5B0FF2DB7A07828C29F4E29D1F39256E7
+                      time:
+                        type: number
+                        example: 1573822448
+                      validator_list_hash_short:
+                        type: number
+                        example: 617944277
+                      version:
+                        type: number
+                        example: 0
+                      vert_seqno:
+                        type: number
+                        example: 0
+                      vert_seqno_incr:
+                        type: boolean
+                        example: false
+                      want_merge:
+                        type: boolean
+                        example: false
+                      want_split:
+                        type: boolean
+                        example: false
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          example: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                        fee:
+                          type: string
+                          example: '0'
+                        hash:
+                          type: string
+                          example: 3181D9E81DD509FDA3DEB26B2C32EB78870392F0B391433A205CF827B6166FE5
+                        lt:
+                          type: number
+                          example: 23000001
+                        messageIn:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              destination:
+                                type: string
+                                example: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                              lt:
+                                type: number
+                                example: 22000009
+                              message_hash:
+                                type: string
+                                example: BEC7153FFB7A4EBC8034D7ADF6C4D67CA896E853B1214204967F362BEDA88223
+                              source:
+                                type: string
+                                example: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                              time:
+                                type: number
+                                example: 1573822445
+                              transfer:
+                                nullable: true
+                                example: null
+                              value:
+                                type: string
+                                example: '100000000'
+                          example:
+                          - destination: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                            lt: 22000009
+                            message_hash: BEC7153FFB7A4EBC8034D7ADF6C4D67CA896E853B1214204967F362BEDA88223
+                            source: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                            time: 1573822445
+                            transfer: null
+                            value: '100000000'
+                        time:
+                          type: number
+                          example: 1573822448
+                        type:
+                          type: string
+                          example: ordinary
+                    example:
+                    - address: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                      fee: '0'
+                      hash: 3181D9E81DD509FDA3DEB26B2C32EB78870392F0B391433A205CF827B6166FE5
+                      lt: 23000001
+                      messageIn:
+                      - destination: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                        lt: 22000009
+                        message_hash: BEC7153FFB7A4EBC8034D7ADF6C4D67CA896E853B1214204967F362BEDA88223
+                        source: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                        time: 1573822445
+                        transfer: null
+                        value: '100000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                      fee: '0'
+                      hash: 99046761A80D6F96A17EBA308014BFEF0854595D3058A220C46EACDE876F5490
+                      lt: 23000005
+                      messageIn:
+                      - destination: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                        lt: 23000002
+                        message_hash: 8AF9C1E2C134CED622866669D439DB1DDFBEC4F3FD979386118632DB64973823
+                        source: Ef__________________________________________76aR
+                        time: 1573822448
+                        transfer: null
+                        value: '120000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                      hash: 93992251B2BC1A2EB07C65FE07E703AE8353103898FEAE41F7F9054230042AAF
+                      lt: 23000001
+                      time: 1573822448
+                      type: tick_tock
+                    - address: Ef__________________________________________76aR
+                      fee: '3333282'
+                      hash: 2025849F0A6FBC08580D54EAA67A7593943FC8E7DD78895C32714CB05DD45702
+                      lt: 23000005
+                      messageIn:
+                      - destination: Ef__________________________________________76aR
+                        lt: 23000004
+                        message_hash: D0453F169DE0F51DB8FA52BA11C3A4C333E89F2F6CC954C0E3B3A92D09F0497F
+                        source: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                        time: 1573822448
+                        transfer: null
+                        value: '130000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                      fee: '0'
+                      hash: 0011CD784328D4D5E049F3E1DD79FA435F1809A286841167714AF323E938D5BA
+                      lt: 23000003
+                      messageIn:
+                      - destination: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                        lt: 23000002
+                        message_hash: 99E102465F7B1688179EC7A47E377C4FB85511407B604ADCBD6A1A7266C70264
+                        source: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                        time: 1573822448
+                        transfer: null
+                        value: '100000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                      fee: '0'
+                      hash: 95CD33E40B6AADADABC184FCC7369E050B4BFEF8506BC137A1CBBA9908508FB3
+                      lt: 23000002
+                      messageIn:
+                      - destination: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                        lt: 23000000
+                        message_hash: 7B7B0510A93D8558B4D9D32E1BE3C933B1B2C1A17C75FD67CCF38D70E6D417AE
+                        source: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                        time: 1573822448
+                        transfer: null
+                        value: '2720000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef__________________________________________76aR
+                      fee: '3333282'
+                      hash: F9F2F21AB991EC3D2D9829C3443DB0E2F89A6BC648A1344E9095F8E076CDAE3B
+                      lt: 23000001
+                      messageIn:
+                      - destination: Ef__________________________________________76aR
+                        lt: 22000011
+                        message_hash: B1FD2B4173017C14E78F4BB227CEE1E98F27FCCC65910C5B2098DAD777365AF8
+                        source: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                        time: 1573822445
+                        transfer: null
+                        value: '130000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef9VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVbxn
+                      hash: 29DC566C2C0E8B5AAC5DB1686D0240336F713FC83F6A6986283D0B9126A743B4
+                      lt: 23000008
+                      time: 1573822448
+                      type: tick_tock
+                    - address: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                      hash: CC588E68F007A88780F0FCEACE5B8001B35854B2130B33C8FE63405B8C18FEF4
+                      lt: 23000001
+                      time: 1573822448
+                      type: tick_tock
+                    - address: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                      fee: '0'
+                      hash: 400B0E2CA5EBEE58080E553001B53668E36707D2529B0C4C47CAEA132414AE73
+                      lt: 23000007
+                      messageIn:
+                      - destination: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                        lt: 23000006
+                        message_hash: 3A4C789DC6BA7D2D09BCC28D8D296CEC2C5803137541841D0E2965B1C3A48269
+                        source: Ef__________________________________________76aR
+                        time: 1573822448
+                        transfer: null
+                        value: '120000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                      hash: 9BA22B51CBC7130247EF379A2458EBFA2D63E78340531784A2A055639330D644
+                      lt: 23000008
+                      time: 1573822448
+                      type: tick_tock
+                  validators:
+                    type: array
+                    items:
+                      type: string
+                      example: Ef8nRyI3zRwrD4dnmA_ufSVXTAE9xNUnDXDjaiBzYgllWbUj
+                    example:
+                    - Ef8nRyI3zRwrD4dnmA_ufSVXTAE9xNUnDXDjaiBzYgllWbUj
+                  value_flow:
+                    type: object
+                    properties:
+                      created:
+                        type: string
+                        example: '1700000000'
+                      exported:
+                        type: string
+                        example: '230000000'
+                      fees_collected:
+                        type: string
+                        example: '2720000000'
+                      fees_imported:
+                        type: string
+                        example: '1000000000'
+                      from_prev_blk:
+                        type: string
+                        example: '5000002005350000000'
+                      imported:
+                        type: string
+                        example: '230000000'
+                      minted:
+                        type: string
+                        example: '0'
+                      recovered:
+                        type: string
+                        example: '2720000000'
+                      to_next_blk:
+                        type: string
+                        example: '5000002008050000000'
+              examples:
+                getBlock:
+                  value:
+                    header:
+                      after_merge: false
+                      after_split: false
+                      before_split: false
+                      block:
+                        seqno: 19
+                        shard: '8000000000000000'
+                        workchain: -1
+                      catchain_seqno: 1
+                      filehash: A3988131BB3418D2E0CC2794709E392810DA675D10D7A01A6B0E6D351CE852E4
+                      flags: 0
+                      global_id: -239
+                      key_block: false
+                      lt_end: 23000012
+                      lt_start: 23000000
+                      masterchain_block:
+                        filehash: EC23AEE3CC54868D2D1D9336091105E342E618AED681C0AA792466603290DD94
+                        roothash: 408C1E5D718AB95CEC00B96A8A04D3B16909EBFC11F8DE0DCF7193F9C1638616
+                        seqno: 18
+                        shard: '8000000000000000'
+                        workchain: -1
+                      min_ref_mc_seqno: 17
+                      next_block:
+                        seqno: 20
+                        shard: '8000000000000000'
+                        workchain: -1
+                      not_master: false
+                      prev_key_block_seqno:
+                        seqno: 0
+                        shard: '8000000000000000'
+                        workchain: -1
+                      previous:
+                      - filehas: EC23AEE3CC54868D2D1D9336091105E342E618AED681C0AA792466603290DD94
+                        roothash: 408C1E5D718AB95CEC00B96A8A04D3B16909EBFC11F8DE0DCF7193F9C1638616
+                        seqno: 18
+                        shard: '8000000000000000'
+                        workchain: -1
+                      roothash: 2884922A6C3E639AC1CC476AC0E40DF5B0FF2DB7A07828C29F4E29D1F39256E7
+                      time: 1573822448
+                      validator_list_hash_short: 617944277
+                      version: 0
+                      vert_seqno: 0
+                      vert_seqno_incr: false
+                      want_merge: false
+                      want_split: false
+                    transactions:
+                    - address: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                      fee: '0'
+                      hash: 3181D9E81DD509FDA3DEB26B2C32EB78870392F0B391433A205CF827B6166FE5
+                      lt: 23000001
+                      messageIn:
+                      - destination: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                        lt: 22000009
+                        message_hash: BEC7153FFB7A4EBC8034D7ADF6C4D67CA896E853B1214204967F362BEDA88223
+                        source: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                        time: 1573822445
+                        transfer: null
+                        value: '100000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                      fee: '0'
+                      hash: 99046761A80D6F96A17EBA308014BFEF0854595D3058A220C46EACDE876F5490
+                      lt: 23000005
+                      messageIn:
+                      - destination: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                        lt: 23000002
+                        message_hash: 8AF9C1E2C134CED622866669D439DB1DDFBEC4F3FD979386118632DB64973823
+                        source: Ef__________________________________________76aR
+                        time: 1573822448
+                        transfer: null
+                        value: '120000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                      hash: 93992251B2BC1A2EB07C65FE07E703AE8353103898FEAE41F7F9054230042AAF
+                      lt: 23000001
+                      time: 1573822448
+                      type: tick_tock
+                    - address: Ef__________________________________________76aR
+                      fee: '3333282'
+                      hash: 2025849F0A6FBC08580D54EAA67A7593943FC8E7DD78895C32714CB05DD45702
+                      lt: 23000005
+                      messageIn:
+                      - destination: Ef__________________________________________76aR
+                        lt: 23000004
+                        message_hash: D0453F169DE0F51DB8FA52BA11C3A4C333E89F2F6CC954C0E3B3A92D09F0497F
+                        source: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                        time: 1573822448
+                        transfer: null
+                        value: '130000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                      fee: '0'
+                      hash: 0011CD784328D4D5E049F3E1DD79FA435F1809A286841167714AF323E938D5BA
+                      lt: 23000003
+                      messageIn:
+                      - destination: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                        lt: 23000002
+                        message_hash: 99E102465F7B1688179EC7A47E377C4FB85511407B604ADCBD6A1A7266C70264
+                        source: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                        time: 1573822448
+                        transfer: null
+                        value: '100000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                      fee: '0'
+                      hash: 95CD33E40B6AADADABC184FCC7369E050B4BFEF8506BC137A1CBBA9908508FB3
+                      lt: 23000002
+                      messageIn:
+                      - destination: Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF
+                        lt: 23000000
+                        message_hash: 7B7B0510A93D8558B4D9D32E1BE3C933B1B2C1A17C75FD67CCF38D70E6D417AE
+                        source: Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU
+                        time: 1573822448
+                        transfer: null
+                        value: '2720000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef__________________________________________76aR
+                      fee: '3333282'
+                      hash: F9F2F21AB991EC3D2D9829C3443DB0E2F89A6BC648A1344E9095F8E076CDAE3B
+                      lt: 23000001
+                      messageIn:
+                      - destination: Ef__________________________________________76aR
+                        lt: 22000011
+                        message_hash: B1FD2B4173017C14E78F4BB227CEE1E98F27FCCC65910C5B2098DAD777365AF8
+                        source: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                        time: 1573822445
+                        transfer: null
+                        value: '130000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef9VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVbxn
+                      hash: 29DC566C2C0E8B5AAC5DB1686D0240336F713FC83F6A6986283D0B9126A743B4
+                      lt: 23000008
+                      time: 1573822448
+                      type: tick_tock
+                    - address: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                      hash: CC588E68F007A88780F0FCEACE5B8001B35854B2130B33C8FE63405B8C18FEF4
+                      lt: 23000001
+                      time: 1573822448
+                      type: tick_tock
+                    - address: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                      fee: '0'
+                      hash: 400B0E2CA5EBEE58080E553001B53668E36707D2529B0C4C47CAEA132414AE73
+                      lt: 23000007
+                      messageIn:
+                      - destination: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                        lt: 23000006
+                        message_hash: 3A4C789DC6BA7D2D09BCC28D8D296CEC2C5803137541841D0E2965B1C3A48269
+                        source: Ef__________________________________________76aR
+                        time: 1573822448
+                        transfer: null
+                        value: '120000000'
+                      time: 1573822448
+                      type: ordinary
+                    - address: Ef80UXx731GHxVr0-LYf3DIViMerdo3uJLAG3ykQZFjXz2kW
+                      hash: 9BA22B51CBC7130247EF379A2458EBFA2D63E78340531784A2A055639330D644
+                      lt: 23000008
+                      time: 1573822448
+                      type: tick_tock
+                    validators:
+                    - Ef8nRyI3zRwrD4dnmA_ufSVXTAE9xNUnDXDjaiBzYgllWbUj
+                    value_flow:
+                      created: '1700000000'
+                      exported: '230000000'
+                      fees_collected: '2720000000'
+                      fees_imported: '1000000000'
+                      from_prev_blk: '5000002005350000000'
+                      imported: '230000000'
+                      minted: '0'
+                      recovered: '2720000000'
+                      to_next_blk: '5000002008050000000'
+  /getHash:
+    get:
+      summary: getHash
+      description: getHash
+      operationId: gethash
+      parameters:
+      - name: workchain
+        in: query
+        schema:
+          type: string
+          example: '0'
+      - name: shard
+        in: query
+        schema:
+          type: string
+          example: '8000000000000000'
+      - name: seqno
+        in: query
+        schema:
+          type: string
+          example: '511'
+      responses:
+        '200':
+          description: getHash
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+            Content-Length:
+              schema:
+                type: string
+                example: '220'
+            Date:
+              schema:
+                type: string
+                example: Wed, 24 May 2023 21:09:10 GMT
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  block:
+                    type: object
+                    properties:
+                      filehash:
+                        type: string
+                        example: 9D2DB90A2FCC06F0016F40A9A6387BC83E3AC1B62C285218C102AC62FF84840E
+                      roothash:
+                        type: string
+                        example: D560A512DA6CA5852567EBC4F46C61CA09577E89BB441AF5303D1DDD1572F9B5
+                      seqno:
+                        type: number
+                        example: 511
+                      shard:
+                        type: string
+                        example: a000000000000000
+                      workchain:
+                        type: number
+                        example: 0
+              examples:
+                getHash:
+                  value:
+                    block:
+                      filehash: 9D2DB90A2FCC06F0016F40A9A6387BC83E3AC1B62C285218C102AC62FF84840E
+                      roothash: D560A512DA6CA5852567EBC4F46C61CA09577E89BB441AF5303D1DDD1572F9B5
+                      seqno: 511
+                      shard: a000000000000000
+                      workchain: 0
+  /account:
+    get:
+      summary: getAccount
+      description: getAccount
+      operationId: getaccount
+      parameters:
+      - name: account
+        in: query
+        schema:
+          type: string
+          example: EQDoO8CXkKGK5gMEOsodNyp6m8UNo-nWDVewp8ZMzN4gIBZh
+      responses:
+        '200':
+          description: getAccount
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+            Content-Length:
+              schema:
+                type: string
+                example: '3528'
+            Date:
+              schema:
+                type: string
+                example: Wed, 24 May 2023 21:09:30 GMT
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: string
+                    example: EQDoO8CXkKGK5gMEOsodNyp6m8UNo-nWDVewp8ZMzN4gIBZh
+                  account_hex:
+                    type: string
+                    example: E83BC09790A18AE603043ACA1D372A7A9BC50DA3E9D60D57B0A7C64CCCDE2020
+                  balance:
+                    type: string
+                    example: '4331876177'
+                  block:
+                    type: object
+                    properties:
+                      filehash:
+                        type: string
+                        example: ABDEC243D3C1B3E1CCA263960DB2F741B62067FD60AD2CAFEC4320761000DBBE
+                      roothash:
+                        type: string
+                        example: 802CE74C0035AFEC1058D4031E5166051E9C5C257A0ABD046E90B3CC5BA720FB
+                      seqno:
+                        type: number
+                        example: 35473999
+                      shard:
+                        type: string
+                        example: '8000000000000000'
+                      workchain:
+                        type: number
+                        example: 0
+                  contract_state:
+                    type: object
+                    properties:
+                      contract_data:
+                        type: object
+                        properties: {}
+                      state_init:
+                        type: object
+                        properties:
+                          code:
+                            type: object
+                            properties:
+                              code_base64:
+                                type: string
+                                example: te6cckECFAEAAtQAART/APSkE/S88sgLAQIBIAIDAgFIBAUE+PKDCNcYINMf0x/THwL4I7vyZO1E0NMf0x/T//QE0VFDuvKhUVG68qIF+QFUEGT5EPKj+AAkpMjLH1JAyx9SMMv/UhD0AMntVPgPAdMHIcAAn2xRkyDXSpbTB9QC+wDoMOAhwAHjACHAAuMAAcADkTDjDQOkyMsfEssfy/8QERITAubQAdDTAyFxsJJfBOAi10nBIJJfBOAC0x8hghBwbHVnvSKCEGRzdHK9sJJfBeAD+kAwIPpEAcjKB8v/ydDtRNCBAUDXIfQEMFyBAQj0Cm+hMbOSXwfgBdM/yCWCEHBsdWe6kjgw4w0DghBkc3RyupJfBuMNBgcCASAICQB4AfoA9AQw+CdvIjBQCqEhvvLgUIIQcGx1Z4MesXCAGFAEywUmzxZY+gIZ9ADLaRfLH1Jgyz8gyYBA+wAGAIpQBIEBCPRZMO1E0IEBQNcgyAHPFvQAye1UAXKwjiOCEGRzdHKDHrFwgBhQBcsFUAPPFiP6AhPLassfyz/JgED7AJJfA+ICASAKCwBZvSQrb2omhAgKBrkPoCGEcNQICEekk30pkQzmkD6f+YN4EoAbeBAUiYcVnzGEAgFYDA0AEbjJftRNDXCx+AA9sp37UTQgQFA1yH0BDACyMoHy//J0AGBAQj0Cm+hMYAIBIA4PABmtznaiaEAga5Drhf/AABmvHfaiaEAQa5DrhY/AAG7SB/oA1NQi+QAFyMoHFcv/ydB3dIAYyMsFywIizxZQBfoCFMtrEszMyXP7AMhAFIEBCPRR8qcCAHCBAQjXGPoA0z/IVCBHgQEI9FHyp4IQbm90ZXB0gBjIywXLAlAGzxZQBPoCFMtqEssfyz/Jc/sAAgBsgQEI1xj6ANM/MFIkgQEI9Fnyp4IQZHN0cnB0gBjIywXLAlAFzxZQA/oCE8tqyx8Syz/Jc/sAAAr0AMntVGliJeU=
+                              code_hex:
+                                type: string
+                                example: b5ee9c72410214010002d4000114ff00f4a413f4bcf2c80b010201200203020148040504f8f28308d71820d31fd31fd31f02f823bbf264ed44d0d31fd31fd3fff404d15143baf2a15151baf2a205f901541064f910f2a3f80024a4c8cb1f5240cb1f5230cbff5210f400c9ed54f80f01d30721c0009f6c519320d74a96d307d402fb00e830e021c001e30021c002e30001c0039130e30d03a4c8cb1f12cb1fcbff1011121302e6d001d0d3032171b0925f04e022d749c120925f04e002d31f218210706c7567bd22821064737472bdb0925f05e003fa403020fa4401c8ca07cbffc9d0ed44d0810140d721f404305c810108f40a6fa131b3925f07e005d33fc8258210706c7567ba923830e30d03821064737472ba925f06e30d06070201200809007801fa00f40430f8276f2230500aa121bef2e0508210706c7567831eb17080185004cb0526cf1658fa0219f400cb6917cb1f5260cb3f20c98040fb0006008a5004810108f45930ed44d0810140d720c801cf16f400c9ed540172b08e23821064737472831eb17080185005cb055003cf1623fa0213cb6acb1fcb3fc98040fb00925f03e20201200a0b0059bd242b6f6a2684080a06b90fa0218470d4080847a4937d29910ce6903e9ff9837812801b7810148987159f31840201580c0d0011b8c97ed44d0d70b1f8003db29dfb513420405035c87d010c00b23281f2fff274006040423d029be84c600201200e0f0019adce76a26840206b90eb85ffc00019af1df6a26840106b90eb858fc0006ed207fa00d4d422f90005c8ca0715cbffc9d077748018c8cb05cb0222cf165005fa0214cb6b12ccccc973fb00c84014810108f451f2a7020070810108d718fa00d33fc8542047810108f451f2a782106e6f746570748018c8cb05cb025006cf165004fa0214cb6a12cb1fcb3fc973fb0002006c810108d718fa00d33f305224810108f459f2a782106473747270748018c8cb05cb025005cf165003fa0213cb6acb1f12cb3fc973fb00000af400c9ed54696225e5
+                          data:
+                            type: object
+                            properties:
+                              data_base64:
+                                type: string
+                                example: te6ccgEBAgEAUQABUQAAAA4pqaMX8ZG4eEgJCJDE96ZjyNBRo1Nv5F89UTrhTu6uLXOKWd3AAQBFoQAe1PzOCkrsrk+iyc8dHSbWAuPnZE/RzqfDPfeal1XzXDA=
+                              data_hex:
+                                type: string
+                                example: b5ee9c720101020100510001510000000e29a9a317f191b87848090890c4f7a663c8d051a3536fe45f3d513ae14eeeae2d738a59ddc0010045a1001ed4fcce0a4aecae4fa2c9cf1d1d26d602e3e7644fd1cea7c33df79a9755f35c30
+                          library:
+                            nullable: true
+                            example: null
+                          wallet_type:
+                            type: string
+                            example: v4r2
+                  last_transaction:
+                    type: object
+                    properties:
+                      account:
+                        type: string
+                        example: EQDoO8CXkKGK5gMEOsodNyp6m8UNo-nWDVewp8ZMzN4gIBZh
+                      hash:
+                        type: string
+                        example: CAD238414D68FF070705AC79F832E5D60553E676B7E386326EFC3967E880E173
+                      lt:
+                        type: number
+                        example: 37321843000017
+                  state:
+                    type: string
+                    example: active
+              examples:
+                getAccount:
+                  value:
+                    account: EQDoO8CXkKGK5gMEOsodNyp6m8UNo-nWDVewp8ZMzN4gIBZh
+                    account_hex: E83BC09790A18AE603043ACA1D372A7A9BC50DA3E9D60D57B0A7C64CCCDE2020
+                    balance: '4331876177'
+                    block:
+                      filehash: ABDEC243D3C1B3E1CCA263960DB2F741B62067FD60AD2CAFEC4320761000DBBE
+                      roothash: 802CE74C0035AFEC1058D4031E5166051E9C5C257A0ABD046E90B3CC5BA720FB
+                      seqno: 35473999
+                      shard: '8000000000000000'
+                      workchain: 0
+                    contract_state:
+                      contract_data: {}
+                      state_init:
+                        code:
+                          code_base64: te6cckECFAEAAtQAART/APSkE/S88sgLAQIBIAIDAgFIBAUE+PKDCNcYINMf0x/THwL4I7vyZO1E0NMf0x/T//QE0VFDuvKhUVG68qIF+QFUEGT5EPKj+AAkpMjLH1JAyx9SMMv/UhD0AMntVPgPAdMHIcAAn2xRkyDXSpbTB9QC+wDoMOAhwAHjACHAAuMAAcADkTDjDQOkyMsfEssfy/8QERITAubQAdDTAyFxsJJfBOAi10nBIJJfBOAC0x8hghBwbHVnvSKCEGRzdHK9sJJfBeAD+kAwIPpEAcjKB8v/ydDtRNCBAUDXIfQEMFyBAQj0Cm+hMbOSXwfgBdM/yCWCEHBsdWe6kjgw4w0DghBkc3RyupJfBuMNBgcCASAICQB4AfoA9AQw+CdvIjBQCqEhvvLgUIIQcGx1Z4MesXCAGFAEywUmzxZY+gIZ9ADLaRfLH1Jgyz8gyYBA+wAGAIpQBIEBCPRZMO1E0IEBQNcgyAHPFvQAye1UAXKwjiOCEGRzdHKDHrFwgBhQBcsFUAPPFiP6AhPLassfyz/JgED7AJJfA+ICASAKCwBZvSQrb2omhAgKBrkPoCGEcNQICEekk30pkQzmkD6f+YN4EoAbeBAUiYcVnzGEAgFYDA0AEbjJftRNDXCx+AA9sp37UTQgQFA1yH0BDACyMoHy//J0AGBAQj0Cm+hMYAIBIA4PABmtznaiaEAga5Drhf/AABmvHfaiaEAQa5DrhY/AAG7SB/oA1NQi+QAFyMoHFcv/ydB3dIAYyMsFywIizxZQBfoCFMtrEszMyXP7AMhAFIEBCPRR8qcCAHCBAQjXGPoA0z/IVCBHgQEI9FHyp4IQbm90ZXB0gBjIywXLAlAGzxZQBPoCFMtqEssfyz/Jc/sAAgBsgQEI1xj6ANM/MFIkgQEI9Fnyp4IQZHN0cnB0gBjIywXLAlAFzxZQA/oCE8tqyx8Syz/Jc/sAAAr0AMntVGliJeU=
+                          code_hex: b5ee9c72410214010002d4000114ff00f4a413f4bcf2c80b010201200203020148040504f8f28308d71820d31fd31fd31f02f823bbf264ed44d0d31fd31fd3fff404d15143baf2a15151baf2a205f901541064f910f2a3f80024a4c8cb1f5240cb1f5230cbff5210f400c9ed54f80f01d30721c0009f6c519320d74a96d307d402fb00e830e021c001e30021c002e30001c0039130e30d03a4c8cb1f12cb1fcbff1011121302e6d001d0d3032171b0925f04e022d749c120925f04e002d31f218210706c7567bd22821064737472bdb0925f05e003fa403020fa4401c8ca07cbffc9d0ed44d0810140d721f404305c810108f40a6fa131b3925f07e005d33fc8258210706c7567ba923830e30d03821064737472ba925f06e30d06070201200809007801fa00f40430f8276f2230500aa121bef2e0508210706c7567831eb17080185004cb0526cf1658fa0219f400cb6917cb1f5260cb3f20c98040fb0006008a5004810108f45930ed44d0810140d720c801cf16f400c9ed540172b08e23821064737472831eb17080185005cb055003cf1623fa0213cb6acb1fcb3fc98040fb00925f03e20201200a0b0059bd242b6f6a2684080a06b90fa0218470d4080847a4937d29910ce6903e9ff9837812801b7810148987159f31840201580c0d0011b8c97ed44d0d70b1f8003db29dfb513420405035c87d010c00b23281f2fff274006040423d029be84c600201200e0f0019adce76a26840206b90eb85ffc00019af1df6a26840106b90eb858fc0006ed207fa00d4d422f90005c8ca0715cbffc9d077748018c8cb05cb0222cf165005fa0214cb6b12ccccc973fb00c84014810108f451f2a7020070810108d718fa00d33fc8542047810108f451f2a782106e6f746570748018c8cb05cb025006cf165004fa0214cb6a12cb1fcb3fc973fb0002006c810108d718fa00d33f305224810108f459f2a782106473747270748018c8cb05cb025005cf165003fa0213cb6acb1f12cb3fc973fb00000af400c9ed54696225e5
+                        data:
+                          data_base64: te6ccgEBAgEAUQABUQAAAA4pqaMX8ZG4eEgJCJDE96ZjyNBRo1Nv5F89UTrhTu6uLXOKWd3AAQBFoQAe1PzOCkrsrk+iyc8dHSbWAuPnZE/RzqfDPfeal1XzXDA=
+                          data_hex: b5ee9c720101020100510001510000000e29a9a317f191b87848090890c4f7a663c8d051a3536fe45f3d513ae14eeeae2d738a59ddc0010045a1001ed4fcce0a4aecae4fa2c9cf1d1d26d602e3e7644fd1cea7c33df79a9755f35c30
+                        library: null
+                        wallet_type: v4r2
+                    last_transaction:
+                      account: EQDoO8CXkKGK5gMEOsodNyp6m8UNo-nWDVewp8ZMzN4gIBZh
+                      hash: CAD238414D68FF070705AC79F832E5D60553E676B7E386326EFC3967E880E173
+                      lt: 37321843000017
+                    state: active
+  /getHashByHeight:
+    get:
+      summary: getHashByHeight
+      description: getHashByHeight
+      operationId: gethashbyheight
+      parameters:
+      - name: workchain
+        in: query
+        schema:
+          type: string
+          example: '0'
+      - name: seqno
+        in: query
+        schema:
+          type: string
+          example: '3983644'
+      responses:
+        '200':
+          description: getHashByHeight
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: Keep-Alive
+            Content-Length:
+              schema:
+                type: string
+                example: '1545'
+            Date:
+              schema:
+                type: string
+                example: Wed, 24 May 2023 21:09:48 GMT
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '1000000000000000':
+                    type: object
+                    properties:
+                      filehash:
+                        type: string
+                        example: 248A9D8AB11CD6978197F9E6333B3FB6349FE04D5931813A26C428F99D57B50B
+                      roothash:
+                        type: string
+                        example: 73DA601F48B881AB034893428584270B37CDED6E7B5B5209A4ED1FEFB5A497E4
+                      seqno:
+                        type: number
+                        example: 3983644
+                  '2400000000000000':
+                    type: object
+                    properties:
+                      filehash:
+                        type: string
+                        example: F8A7B303DC18DF340C1522DF0938CBF649FF07D73E555945967C01FE8015C74E
+                      roothash:
+                        type: string
+                        example: 87E0A9940D53E33DFD319B6C4CFA5F7B60FB35231523B27F0A4EF6CE7399B890
+                      seqno:
+                        type: number
+                        example: 3983644
+                  2a00000000000000:
+                    type: object
+                    properties:
+                      filehash:
+                        type: string
+                        example: 55E19CDB4AAF58430CCAE6C7840F2A2F73978DFDBA83DA41F61CF1D384B911DE
+                      roothash:
+                        type: string
+                        example: 336DAA69248214648C4267172C86EFBFB3A446CC13A81FD9D82FACC2BD08CFF3
+                      seqno:
+                        type: number
+                        example: 3983644
+                  '2e00000000000000':
+                    type: object
+                    properties:
+                      filehash:
+                        type: string
+                        example: BFE921100A67B6905C10F11BF82253AEEC5A8329BEC32269472D786FA3F12A64
+                      roothash:
+                        type: string
+                        example: EDAD753AC513271F707F2EA773103B44A178C30FDCFCCE6AC7220A2DBD61F23A
+                      seqno:
+                        type: number
+                        example: 3983644
+                  '3800000000000000':
+                    type: object
+                    properties:
+                      filehash:
+                        type: string
+                        example: DB81541DE11800C2C51380E4AF866050D679C73ED8DC1EB5EDC88ACE8D853B27
+                      roothash:
+                        type: string
+                        example: 7E2CEFA775843750B054F820BAF21281129B911E275DF5DF22FB488E3B165A9C
+                      seqno:
+                        type: number
+                        example: 3983644
+                  '6000000000000000':
+                    type: object
+                    properties:
+                      filehash:
+                        type: string
+                        example: 073BBEF4E326C98197DEDDB1B25BB937F544553B6A11040A933DF0E3EFB5339F
+                      roothash:
+                        type: string
+                        example: 8194A705A62349FF3F852948AA886484C2157C77A0A4AD5FED703F9A9F8B1415
+                      seqno:
+                        type: number
+                        example: 3983644
+                  a000000000000000:
+                    type: object
+                    properties:
+                      filehash:
+                        type: string
+                        example: 3D154E9880F48F6DB11861DE473A4C5BAF7989A8595F4F88DBA6D5560C0B56B4
+                      roothash:
+                        type: string
+                        example: 3D892C3272DA7211C9E0E10DFE2AF3C87D4440F7999E434B859629B67412E3A6
+                      seqno:
+                        type: number
+                        example: 3983644
+                  e000000000000000:
+                    type: object
+                    properties:
+                      filehash:
+                        type: string
+                        example: 13D5E64498736F4E2574D16D5AF444C85C0568EA84968DBF6DEC768F3EBFBD99
+                      roothash:
+                        type: string
+                        example: BC816BC358AAD245C82A2796AFFF0ACF06AA60DEF22C3AC34BAB342BE874FE17
+                      seqno:
+                        type: number
+                        example: 3983644
+              examples:
+                getHashByHeight:
+                  value:
+                    '1000000000000000':
+                      filehash: 248A9D8AB11CD6978197F9E6333B3FB6349FE04D5931813A26C428F99D57B50B
+                      roothash: 73DA601F48B881AB034893428584270B37CDED6E7B5B5209A4ED1FEFB5A497E4
+                      seqno: 3983644
+                    '2400000000000000':
+                      filehash: F8A7B303DC18DF340C1522DF0938CBF649FF07D73E555945967C01FE8015C74E
+                      roothash: 87E0A9940D53E33DFD319B6C4CFA5F7B60FB35231523B27F0A4EF6CE7399B890
+                      seqno: 3983644
+                    2a00000000000000:
+                      filehash: 55E19CDB4AAF58430CCAE6C7840F2A2F73978DFDBA83DA41F61CF1D384B911DE
+                      roothash: 336DAA69248214648C4267172C86EFBFB3A446CC13A81FD9D82FACC2BD08CFF3
+                      seqno: 3983644
+                    '2e00000000000000':
+                      filehash: BFE921100A67B6905C10F11BF82253AEEC5A8329BEC32269472D786FA3F12A64
+                      roothash: EDAD753AC513271F707F2EA773103B44A178C30FDCFCCE6AC7220A2DBD61F23A
+                      seqno: 3983644
+                    '3800000000000000':
+                      filehash: DB81541DE11800C2C51380E4AF866050D679C73ED8DC1EB5EDC88ACE8D853B27
+                      roothash: 7E2CEFA775843750B054F820BAF21281129B911E275DF5DF22FB488E3B165A9C
+                      seqno: 3983644
+                    '6000000000000000':
+                      filehash: 073BBEF4E326C98197DEDDB1B25BB937F544553B6A11040A933DF0E3EFB5339F
+                      roothash: 8194A705A62349FF3F852948AA886484C2157C77A0A4AD5FED703F9A9F8B1415
+                      seqno: 3983644
+                    a000000000000000:
+                      filehash: 3D154E9880F48F6DB11861DE473A4C5BAF7989A8595F4F88DBA6D5560C0B56B4
+                      roothash: 3D892C3272DA7211C9E0E10DFE2AF3C87D4440F7999E434B859629B67412E3A6
+                      seqno: 3983644
+                    e000000000000000:
+                      filehash: 13D5E64498736F4E2574D16D5AF444C85C0568EA84968DBF6DEC768F3EBFBD99
+                      roothash: BC816BC358AAD245C82A2796AFFF0ACF06AA60DEF22C3AC34BAB342BE874FE17
+                      seqno: 3983644
+tags: []
+
