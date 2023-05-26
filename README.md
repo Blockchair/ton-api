@@ -65,3 +65,9 @@ And it will give you an answer:
 You can find all endpoints with examples of answers in swagger by building a docker container with it:
 
 ```docker run -e SWAGGER_JSON=ton.yaml -e SWAGGER_PORT=8080 -p 8080:8080 —name swagger —network=<ton api network name> swagger/swagger-ui```
+
+License
+
+TON API is released under the terms of the MIT license. See [LICENSE.MD](LICENSE.MD) for more information.
+
+By contributing to this repository, you agree to license your work under the MIT license unless specified otherwise at the top of the file itself. Any work contributed where you are not the original author must contain its license header with the original author and source.
