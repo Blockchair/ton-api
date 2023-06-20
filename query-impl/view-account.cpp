@@ -7,8 +7,9 @@ HttpQueryViewAccount::HttpQueryViewAccount(ton::BlockIdExt block_id, block::StdA
 }
 
 HttpQueryViewAccount::HttpQueryViewAccount(std::map<std::string, std::string> opts, std::string prefix,
-                                           td::Promise<MHD_Response *> promise)
-    : HttpQueryCommon(std::move(prefix), std::move(promise)) {
+                                           td::Promise<MHD_Response *> promise, bool fromDB,
+                                           DatabaseConfigParams *dbConfParams)
+    : HttpQueryCommon(std::move(prefix), std::move(promise)), fromDB(fromDB) {
   auto R = parse_block_id(opts, true);
   if (R.is_ok()) {
     block_id_ = R.move_as_ok();
@@ -29,6 +30,24 @@ HttpQueryViewAccount::HttpQueryViewAccount(std::map<std::string, std::string> op
   } else {
     error_ = R2.move_as_error();
     return;
+  }
+  if (fromDB && !dbConfParams) {
+    error_ = td::Status::Error("DB connection error");
+    return;
+  }
+  if (fromDB && dbConfParams) {
+    if (dbConfParams->conn != NULL) {
+      this->conn = dbConfParams->conn;
+    } else {
+      error_ = td::Status::Error("Connection is empty");
+    }
+    if (dbConfParams->mtxDB != NULL) {
+      this->mtx = dbConfParams->mtxDB;
+    } else {
+      error_ = td::Status::Error("Mutex is null");
+    }
+    getFromDB();
+    block_id_ = std::move(res_block_id_);
   }
 }
 

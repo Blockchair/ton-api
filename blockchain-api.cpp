@@ -428,6 +428,13 @@ class CoreActor : public CoreActorInterface {
         td::actor::create_actor<HttpQueryViewAccount>("viewaccount", opts, prefix, std::move(promise)).release();
       }};
       response = g.wait();
+    } else if (command == "accountDB") {
+      HttpQueryRunner g{[&](td::Promise<MHD_Response*> promise) {
+        td::actor::create_actor<HttpQueryViewAccount>("viewaccountDB", opts, prefix, std::move(promise), true,
+                                                      static_cast<DatabaseConfigParams*>(cls))
+            .release();
+      }};
+      response = g.wait();
     } else if (command == "transaction") {
       HttpQueryRunner g{[&](td::Promise<MHD_Response*> promise) {
         td::actor::create_actor<HttpQueryViewTransaction>("viewtransaction", opts, prefix, std::move(promise))
