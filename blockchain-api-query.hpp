@@ -141,11 +141,22 @@ class HttpQueryCommon : public td::actor::Actor {
   void create_header(HttpAnswer &ans) {
   }
 
+#define SELETLASTBLOCKDB                                                                                       \
+  std::string(                                                                                                 \
+      "select seqno, shard_id, encode(filehash, 'hex') as filehash, encode(roothash, 'hex') as roothash from " \
+      "ton_block "                                                                                             \
+      "tb where seqno = (select max(seqno) from ton_block tb where tb.workchain = -1) and workchain = -1;")    \
+      .c_str()
+
  protected:
   td::int32 pending_queries_ = 0;
   td::Status error_;
   td::BufferSlice data_;
   ton::BlockIdExt block_id_;
+  ton::BlockIdExt res_block_id_;
+
+  std::shared_ptr<PGconn> conn;
+  std::mutex *mtx;
 
   td::BufferSlice shard_data_;
   void got_shard_info(td::BufferSlice result);
@@ -156,6 +167,32 @@ class HttpQueryCommon : public td::actor::Actor {
   std::string prefix_;
   td::Promise<MHD_Response *> promise_;
   td::Promise<std::unique_ptr<BlockData>> promise_data_;
+
+  void getFromDB() {
+    if (conn != nullptr) {
+      mtx->lock();
+      std::unique_ptr<PGresult, decltype(&PQclear)> resSQL(PQexec(conn.get(), SELETLASTBLOCKDB), &PQclear);
+      mtx->unlock();
+      if (PQresultStatus(resSQL.get()) != PGRES_TUPLES_OK) {
+        error_ = td::Status::Error("Select failed: " + std::string(PQresultErrorMessage(resSQL.get())));
+        resSQL.reset();
+        finish_query();
+      } else {
+        auto x = ton::FileHash();
+        auto y = ton::RootHash();
+        res_block_id_.id.seqno = static_cast<unsigned int>(std::stoul(PQgetvalue(resSQL.get(), 0, 0)));
+        res_block_id_.id.shard = std::stoll(PQgetvalue(resSQL.get(), 0, 1));
+        x.from_hex(td::Slice(PQgetvalue(resSQL.get(), 0, 2)));
+        res_block_id_.file_hash = x;
+        y.from_hex(td::Slice(PQgetvalue(resSQL.get(), 0, 3)));
+        res_block_id_.root_hash = y;
+        res_block_id_.id.workchain = -1;
+      }
+    } else {
+      error_ = td::Status::Error(404, PSTRING() << "unnable to connect to db");
+      finish_query();
+    }
+  }
 };
 
 class HttpQueryBlockInfo : public HttpQueryCommon {
@@ -186,8 +223,6 @@ class HttpQueryBlockInfo : public HttpQueryCommon {
 
   td::BufferSlice state_proof_;
   td::BufferSlice config_proof_;
-  std::shared_ptr<PGconn> conn;
-  std::mutex *mtx;
 
   bool unpackValidators(HttpAnswer &A, std::shared_ptr<PGconn> conn);
 };
@@ -223,11 +258,9 @@ class HttpQueryBlockSearchHash : public HttpQueryCommon {
   void start_up_query() override;
 
  private:
-  // ton::BlockIdExt block_id_;
   ton::AccountIdPrefixFull account_prefix_;
   td::uint32 mode_ = 0;
   ton::BlockSeqno seqno_ = 0;
-  // td::BufferSlice data_;
 };
 
 class HttpQuerySearchByHeight : public HttpQueryCommon {
@@ -251,8 +284,6 @@ class HttpQuerySearchByHeight : public HttpQueryCommon {
   ton::UnixTime utime_ = 0;
 
   std::vector<std::string> shards;
-  std::shared_ptr<PGconn> conn;
-  std::mutex *mtx;
 
 };
 
@@ -270,8 +301,8 @@ class HttpQueryViewAccount : public HttpQueryCommon {
  public:
   HttpQueryViewAccount(ton::BlockIdExt block_id, block::StdAddress addr, std::string prefix,
                        td::Promise<MHD_Response *> promise);
-  HttpQueryViewAccount(std::map<std::string, std::string> opts, std::string prefix,
-                       td::Promise<MHD_Response *> promise);
+  HttpQueryViewAccount(std::map<std::string, std::string> opts, std::string prefix, td::Promise<MHD_Response *> promise,
+                       bool fromDB = false, DatabaseConfigParams *dbConfParams = nullptr);
 
   void finish_query() override;
 
@@ -279,10 +310,9 @@ class HttpQueryViewAccount : public HttpQueryCommon {
   void got_account(td::BufferSlice result);
 
  private:
+  bool fromDB = false;
   block::StdAddress addr_;
-
   td::BufferSlice proof_;
-  ton::BlockIdExt res_block_id_;
 };
 
 class HttpQueryViewTransaction : public HttpQueryCommon {
@@ -309,10 +339,6 @@ class HttpQueryViewTransaction : public HttpQueryCommon {
   ton::Bits256 hash_;
   bool lastCountTry = false;
 
-  std::shared_ptr<PGconn> conn;
-  std::mutex *mtx;
-
-  ton::BlockIdExt res_block_id_;
   bool code_ = false;
   td::int32 count = 10;
   UniValue uvArr;
@@ -334,8 +360,6 @@ class HttpQueryViewTransaction2 : public HttpQueryCommon {
  private:
   void readFromFile(td::BufferSlice &data);
   bool fromDB = false;
-  std::shared_ptr<PGconn> conn;
-  std::mutex *mtx;
   block::StdAddress addr_;
   ton::LogicalTime lt_;
   ton::Bits256 hash_;
@@ -353,8 +377,6 @@ class HttpQueryViewLastBlock : public HttpQueryCommon {
   void start_up() override;
   void got_result(td::BufferSlice result);
 
- private:
-  ton::BlockIdExt res_block_id_;
 };
 
 class HttpQueryViewLastBlockNumber : public HttpQueryCommon {
@@ -369,16 +391,10 @@ class HttpQueryViewLastBlockNumber : public HttpQueryCommon {
   void start_up() override;
   void get_shards();
   void got_result(td::BufferSlice result);
-
-  void getFromDB();
-
-
+  
  private:
-  ton::BlockIdExt res_block_id_;
   td::int32 workchain_;
   bool fromDb = false;
-  std::shared_ptr<PGconn> conn;
-  std::mutex *mtx;
 };
 
 class HttpQueryConfig : public HttpQueryCommon {
@@ -443,7 +459,6 @@ class HttpQueryRunMethod : public HttpQueryCommon {
 
   td::BufferSlice proof_;
   td::BufferSlice shard_proof_;
-  ton::BlockIdExt res_block_id_;
 
   bool code_ = true;
 };

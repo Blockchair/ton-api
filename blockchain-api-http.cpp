@@ -2295,7 +2295,7 @@ UniValue HttpAnswer::serializeBlockHeaderCellLite(BlockHeaderCell head_c) {
     }
     block::gen::Block::Record blk;
     block::gen::BlockInfo::Record info;
-    block::gen::ValueFlow::Record flow;
+    // block::gen::ValueFlow::Record flow;
     if (!(tlb::unpack_cell(virt_root, blk) && tlb::unpack_cell(blk.info, info))) {
       abort(PSTRING() << "cannot unpack header for block " << block_id.to_str());
     }
@@ -2362,7 +2362,7 @@ void HttpAnswer::serializeObject(BlockHeaderCell head_c) {
     }
     block::gen::Block::Record blk;
     block::gen::BlockInfo::Record info;
-    block::gen::ValueFlow::Record flow;
+    // block::gen::ValueFlow::Record flow;
     if (!(tlb::unpack_cell(virt_root, blk) && tlb::unpack_cell(blk.info, info))) {
       abort(PSTRING() << "cannot unpack header for block " << block_id.to_str());
       // return *this;

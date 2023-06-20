@@ -70,39 +70,6 @@ HttpQueryViewLastBlockNumber::HttpQueryViewLastBlockNumber(std::map<std::string,
   }
 }
 
-#define SELETLASTBLOCKDB                                                                                       \
-  std::string(                                                                                                 \
-      "select seqno, shard_id, encode(filehash, 'hex') as filehash, encode(roothash, 'hex') as roothash from " \
-      "ton_block "                                                                                             \
-      "tb where seqno = (select max(seqno) from ton_block tb where tb.workchain = -1) and workchain = -1;")    \
-      .c_str()
-
-void HttpQueryViewLastBlockNumber::getFromDB() {
-  if (conn != nullptr) {
-    mtx->lock();
-    std::unique_ptr<PGresult, decltype(&PQclear)> resSQL(PQexec(conn.get(), SELETLASTBLOCKDB), &PQclear);
-    mtx->unlock();
-    if (PQresultStatus(resSQL.get()) != PGRES_TUPLES_OK) {
-      error_ = td::Status::Error("Select failed: " + std::string(PQresultErrorMessage(resSQL.get())));
-      resSQL.reset();
-      finish_query();
-    } else {
-      auto x = ton::FileHash();
-      auto y = ton::RootHash();
-      res_block_id_.id.seqno = static_cast<unsigned int>(std::stoul(PQgetvalue(resSQL.get(), 0, 0)));
-      res_block_id_.id.shard = std::stoll(PQgetvalue(resSQL.get(), 0, 1));
-      x.from_hex(td::Slice(PQgetvalue(resSQL.get(), 0, 2)));
-      res_block_id_.file_hash = x;
-      y.from_hex(td::Slice(PQgetvalue(resSQL.get(), 0, 3)));
-      res_block_id_.root_hash = y;
-      res_block_id_.id.workchain = -1;
-    }
-  } else {
-    error_ = td::Status::Error(404, PSTRING() << "unnable to connect to db");
-    finish_query();
-  }
-}
-
 void HttpQueryViewLastBlockNumber::start_up() {
   if (error_.is_error()) {
     abort_query(std::move(error_));
